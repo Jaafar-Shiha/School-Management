@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import main.controller.MainController;
 
@@ -28,14 +29,20 @@ public class DashboardMgmtController implements Initializable {
     }
 //    MainController mainController = new MainController();
     
-    @FXML
-    private ImageView StudentMgmt;
-
-   
+    
+   @FXML
+    private AnchorPane root;
 
     @FXML
     void openStudentMgmtPage() {
-        System.out.println("Finally");
+         try {
+            AnchorPane studentMgmt = FXMLLoader.load(getClass().getClassLoader().getResource("main/view/Students.fxml"));
+            root.getChildren().setAll(studentMgmt);
+        
+
+        }catch(IOException e){
+            System.out.println("ears" + e);
+        }
         
         }
     }
