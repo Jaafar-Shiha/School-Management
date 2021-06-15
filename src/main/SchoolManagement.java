@@ -19,7 +19,7 @@ public class SchoolManagement extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("view/school_management.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/Dashboard.fxml"));
         
         Scene scene = new Scene(root);
         
