@@ -1,6 +1,7 @@
 package main.controller;
 
 import main.dao.StudentDao;
+import main.model.Student;
 
 public class StudentController extends AbstractController
 {
@@ -11,20 +12,28 @@ public class StudentController extends AbstractController
 
 
     @Override
-    public void addButtonHandler() 
+    public void addButtonHandler( Object model ) 
     {
+        Student student = (Student) model;
         
+        super.getDao().add( student );
+        
+//        super.getDao().add(this);
     }
 
     @Override
-    public void updateButtonHandler() 
+    public void updateButtonHandler( Object model ) 
     {
+        Student student = (Student) model;
         
+        super.getDao().update( student );
     }
 
     @Override
-    public void deleteButtonHandler() 
+    public void deleteButtonHandler( Object model ) 
     {
+        Student student = (Student) model;
         
+        super.getDao().delete( student );
     }
 }

@@ -24,7 +24,7 @@ public class StudentDao implements IDAO
     {
         Student student = (Student) model;
         
-        String query = "{call getStudents(?) }";
+        String query = "{call getAllStudents() }";
         
         BasicDB.call(query);
     }
@@ -34,7 +34,18 @@ public class StudentDao implements IDAO
     {
         Student student = (Student) model;
         
-        String query = "{call saveStudent(?) }";
+        String query = "{call addStudentToSchool(" + 
+                student.getFirstName() + 
+                student.getLastName() + 
+                student.getFatherName() +
+                student.getMotherName() +
+                student.getGender() +
+                student.getClassId() +
+                student.getDateOfBirth() +
+                student.getDateOfJoin() +
+                student.getPhone() +
+                student.getAge() +
+                ") }";
         
         BasicDB.callVoid(query);
     }
@@ -44,7 +55,19 @@ public class StudentDao implements IDAO
     {
         Student student = (Student) model;
         
-        String query = "{call updateStudent(?) }";
+        String query = "{call updateStudentInSchool(" + 
+                student.getId() + 
+                student.getFirstName() + 
+                student.getLastName() + 
+                student.getFatherName() +
+                student.getMotherName() +
+                student.getGender() +
+                student.getClassId() +
+                student.getDateOfBirth() +
+                student.getDateOfJoin() +
+                student.getPhone() +
+                student.getAge() +
+                ") }";
         
         BasicDB.callVoid(query);
     }
@@ -54,7 +77,7 @@ public class StudentDao implements IDAO
     {
         Student student = (Student) model;
         
-        String query = "{call deleteStudent(" + student.getId() + ") }";
+        String query = "{call deleteStudentInTheSchool(" + student.getId() + ") }";
         
         BasicDB.callVoid(query);
     }

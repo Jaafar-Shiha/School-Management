@@ -13,19 +13,21 @@ public class TeacherController extends AbstractController
     
     
     @Override
-    public void addButtonHandler() 
+    public void addButtonHandler( Object model ) 
+    {
+        
+        
+//        super.getDao().add(this);
+    }
+
+    @Override
+    public void updateButtonHandler( Object model ) 
     {
         
     }
 
     @Override
-    public void updateButtonHandler() 
-    {
-        
-    }
-
-    @Override
-    public void deleteButtonHandler() 
+    public void deleteButtonHandler( Object model ) 
     {
         
     }

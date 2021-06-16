@@ -12,16 +12,16 @@ public abstract class AbstractController
     }
     
     
-    public void addEventHandlers()
-    {
-        addButtonHandler();
-        updateButtonHandler();
-        deleteButtonHandler();
-    }
+//    public void addEventHandlers()
+//    {
+//        addButtonHandler();
+//        updateButtonHandler();
+//        deleteButtonHandler();
+//    }
     
-    public abstract void addButtonHandler();
-    public abstract void updateButtonHandler();
-    public abstract void deleteButtonHandler();
+    public abstract void addButtonHandler( Object model );
+    public abstract void updateButtonHandler( Object model );
+    public abstract void deleteButtonHandler( Object model );
     
     /**
      * 
