@@ -17,8 +17,6 @@ public class StudentController extends AbstractController
         Student student = (Student) model;
         
         super.getDao().add( student );
-        
-//        super.getDao().add(this);
     }
 
     @Override
