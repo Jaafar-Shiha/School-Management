@@ -40,6 +40,6 @@ public class Teacher extends Person
               teacher.getEmail() );
     }
     
-    private String getEmail() { return this.email; }
-    private void setEmail( String email ){ this.email = email; }
+    public String getEmail() { return this.email; }
+    public void setEmail( String email ){ this.email = email; }
 }

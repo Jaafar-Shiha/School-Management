@@ -1,5 +1,9 @@
 package main.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
 import javafx.collections.ObservableList;
 import main.model.Student;
 import main.db.BasicDB;
@@ -20,13 +24,47 @@ public class StudentDao implements IDAO
     public void setStudents( ObservableList<Student> students ) { this.students = students; }
     
     @Override
-    public void retrieve( Object model )
+    public List retrieve( Object model )
     {
         Student student = (Student) model;
         
         String query = "{call getAllStudents() }";
         
-        BasicDB.call(query);
+        ResultSet resultSet = BasicDB.call(query);
+        
+        try
+        {
+            while( resultSet.next() )
+            {
+                int id = resultSet.getInt(1);
+                String firstName = resultSet.getString(2);
+                String lastName = resultSet.getString(3);
+                String fatherName = resultSet.getString(4);
+                String motherName = resultSet.getString(5);
+                String gender = resultSet.getString(6);
+                int classId = resultSet.getInt(7);
+                Date dateOfBirth = resultSet.getDate(8);
+                Date dateOfJoin = resultSet.getDate(9);
+                String phone = resultSet.getString(9);
+                byte age = resultSet.getByte(9);
+                
+                Student resultStudent = new Student( id, firstName, 
+                                                     lastName, fatherName, 
+                                                     motherName, gender, 
+                                                     classId, dateOfBirth, 
+                                                     dateOfJoin, phone, age );
+                
+                this.students.add( resultStudent );
+            }
+            
+            return this.students;
+        }
+        catch( SQLException sqle )
+        {
+            sqle.printStackTrace();
+        }
+        
+        return null;
     }
     
     @Override

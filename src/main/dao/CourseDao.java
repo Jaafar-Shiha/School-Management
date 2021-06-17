@@ -1,7 +1,7 @@
 package main.dao;
 
+import java.util.List;
 import javafx.collections.ObservableList;
-import main.db.BasicDB;
 import main.model.Course;
 
 public class CourseDao implements IDAO
@@ -20,9 +20,9 @@ public class CourseDao implements IDAO
     public void setCourses( ObservableList<Course> courses ) { this.courses = courses; }
     
     @Override
-    public void retrieve( Object model )
+    public List retrieve( Object model )
     {
-        
+        return null;
     }
     
     @Override
