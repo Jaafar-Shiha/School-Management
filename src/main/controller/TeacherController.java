@@ -1,5 +1,6 @@
 package main.controller;
 
+import java.util.List;
 import main.dao.TeacherDao;
 import main.model.Teacher;
 
@@ -10,6 +11,18 @@ public class TeacherController extends AbstractController
         super( teacherDao );
     }
     
+    
+    @Override
+    public List retrieveAll()
+    {
+        return super.getDao().retrieveAll();
+    }
+    
+    @Override
+    public List retrieve( Object model )
+    {
+        return super.getDao().retrieve(model);
+    }
     
     @Override
     public void addButtonHandler( Object model ) 

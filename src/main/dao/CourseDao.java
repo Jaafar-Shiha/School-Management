@@ -19,6 +19,14 @@ public class CourseDao implements IDAO
     
     public void setCourses( ObservableList<Course> courses ) { this.courses = courses; }
     
+    
+    
+    @Override
+    public List retrieveAll()
+    {
+        return null;
+    }
+    
     @Override
     public List retrieve( Object model )
     {

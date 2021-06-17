@@ -23,11 +23,11 @@ public class StudentDao implements IDAO
     
     public void setStudents( ObservableList<Student> students ) { this.students = students; }
     
+    
+    
     @Override
-    public List retrieve( Object model )
+    public List retrieveAll()
     {
-        Student student = (Student) model;
-        
         String query = "{call getAllStudents() }";
         
         ResultSet resultSet = BasicDB.call(query);
@@ -63,6 +63,14 @@ public class StudentDao implements IDAO
         {
             sqle.printStackTrace();
         }
+        
+        return null;
+    }
+    
+    @Override
+    public List retrieve( Object model )
+    {
+        Student student = (Student) model;
         
         return null;
     }
