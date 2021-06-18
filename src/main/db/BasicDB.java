@@ -18,7 +18,7 @@ public class BasicDB
     /**
      * Represents the URL of the database which the application will connect to.
      */
-    private static final String DATABASE_URL = "jdbc:mysql://localhost/library";
+    private static final String DATABASE_URL = "jdbc:mysql://localhost/schoolManagement";
     
     /**
      * Represents the username of the database account.

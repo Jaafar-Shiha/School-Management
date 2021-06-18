@@ -19,7 +19,13 @@ public class StudentController extends AbstractController
     }
     
     @Override
-    public List<Object> retrieve( Object model )
+    public Object retrieveOne( int id )
+    {
+        return super.getDao().retrieveOne( id );
+    }
+    
+    @Override
+    public List retrieve( Object model )
     {
         return super.getDao().retrieve( model );
     }

@@ -32,6 +32,8 @@ public class StudentDao implements IDAO
         
         ResultSet resultSet = BasicDB.call(query);
         
+        this.students.clear();
+        
         try
         {
             while( resultSet.next() )
@@ -68,9 +70,52 @@ public class StudentDao implements IDAO
     }
     
     @Override
+    public Object retrieveOne( int id )
+    {
+        String query = "{call getStudent(" + id + ") }";
+        
+        ResultSet resultSet = BasicDB.call(query);
+        
+        this.students.clear();
+        
+        try
+        {
+            if( resultSet.next() )
+            {
+                String firstName = resultSet.getString(2);
+                String lastName = resultSet.getString(3);
+                String fatherName = resultSet.getString(4);
+                String motherName = resultSet.getString(5);
+                String gender = resultSet.getString(6);
+                int classId = resultSet.getInt(7);
+                Date dateOfBirth = resultSet.getDate(8);
+                Date dateOfJoin = resultSet.getDate(9);
+                String phone = resultSet.getString(9);
+                byte age = resultSet.getByte(9);
+                
+                Student resultStudent = new Student( id, firstName, 
+                                                     lastName, fatherName, 
+                                                     motherName, gender, 
+                                                     classId, dateOfBirth, 
+                                                     dateOfJoin, phone, age );
+                
+                return resultStudent;
+            }
+        }
+        catch( SQLException sqle )
+        {
+            sqle.printStackTrace();
+        }
+        
+        return null;
+    }
+    
+    @Override
     public List retrieve( Object model )
     {
         Student student = (Student) model;
+        
+        this.students.clear();
         
         return null;
     }

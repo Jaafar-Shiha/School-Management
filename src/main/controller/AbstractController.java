@@ -19,6 +19,13 @@ public abstract class AbstractController
     public abstract List retrieveAll();
     
     /**
+     * Retrieve a SPECIFIC "Model" based on his ID
+     * @param id
+     * @return 
+     */
+    public abstract Object retrieveOne( int id );
+    
+    /**
      * Retrieve a List of "Model"s based on a condition
      * @param model
      * @return 
