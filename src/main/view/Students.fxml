@@ -1,80 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="829.0" prefWidth="1274.0" stylesheets="@css/dashboard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.controller.DashboardMgmtController">
-   <children>
-      <AnchorPane prefHeight="140.0" prefWidth="200.0" styleClass="linear-grad-to-right" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Text fill="#f8f8f8" layoutX="540.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students">
-               <font>
-                  <Font size="50.0" />
-               </font>
-            </Text>
-         </children></AnchorPane>
-     <TableView layoutX="29.0" layoutY="203.0" prefHeight="477.0" prefWidth="1206.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="StID" />
-          <TableColumn prefWidth="97.0" text="First Name" />
-            <TableColumn prefWidth="85.0" text="Last Name" />
-            <TableColumn prefWidth="101.0" text="Father Name" />
-            <TableColumn prefWidth="101.0" text="Mother Name" />
-            <TableColumn prefWidth="101.0" text="Gender" />
-            <TableColumn prefWidth="101.0" text="Class" />
-            <TableColumn prefWidth="107.0" text="Date Of Birth" />
-            <TableColumn prefWidth="102.0" text="Date Of Join" />
-            <TableColumn prefWidth="126.0" text="Phone Number" />
-            <TableColumn prefWidth="83.0" text="Age" />
-            <TableColumn prefWidth="126.0" text="Action" />
-        </columns>
-      </TableView>
-      
-   </children>
-</AnchorPane>
-
-
-<!--<?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
-<AnchorPane fx:id = "root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="829.0" prefWidth="1274.0" stylesheets="@students.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.image.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="829.0" prefWidth="1274.0" stylesheets="@css/students.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.controller.StudentsMgmtController">
    <children>
-      <AnchorPane prefHeight="140.0" prefWidth="200.0" styleClass="linear-grad-to-right" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Text fill="#f8f8f8" layoutX="540.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students">
-               <font>
-                  <Font size="50.0" />
-               </font>
-            </Text>
-         </children></AnchorPane>
-      <TableView layoutX="29.0" layoutY="203.0" prefHeight="477.0" prefWidth="1206.0">
+      <TableView fx:id="studentsTable" editable="true" layoutX="29.0" layoutY="203.0" prefHeight="477.0" prefWidth="1232.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="StID" />
-          <TableColumn prefWidth="97.0" text="First Name" />
-            <TableColumn prefWidth="85.0" text="Last Name" />
-            <TableColumn prefWidth="101.0" text="Father Name" />
-            <TableColumn prefWidth="101.0" text="Mother Name" />
-            <TableColumn prefWidth="101.0" text="Gender" />
-            <TableColumn prefWidth="101.0" text="Class" />
-            <TableColumn prefWidth="107.0" text="Date Of Birth" />
-            <TableColumn prefWidth="102.0" text="Date Of Join" />
-            <TableColumn prefWidth="126.0" text="Phone Number" />
-            <TableColumn prefWidth="83.0" text="Age" />
-            <TableColumn prefWidth="126.0" text="Action" />
+            <TableColumn fx:id="stID" prefWidth="75.0" text="StID" />
+            <!--<TableColumn editable="true" fx:id="fName" prefWidth="97.0" text="First Name" />-->
+            <TableColumn editable="true" fx:id="fName" prefWidth="97.0" text="First Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="fName" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <!--<TableColumn fx:id="lName" prefWidth="85.0" text="Last Name" />-->
+            <TableColumn editable="true" fx:id="lName" prefWidth="85.0" text="Last Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="lName" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <!--<TableColumn fx:id="faName" prefWidth="101.0" text="Father Name" />-->
+            <TableColumn editable="true" fx:id="faName" prefWidth="101.0" text="Father Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="faName" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <!--<TableColumn fx:id="moName" prefWidth="101.0" text="Mother Name" />-->
+            <TableColumn editable="true" fx:id="moName" prefWidth="101.0" text="Mother Name" >
+                <cellValueFactory>
+                    <PropertyValueFactory property="moName" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <!--<TableColumn fx:id="gender" prefWidth="101.0" text="Gender" />-->
+            <TableColumn editable="true" fx:id="gender" prefWidth="101.0" text="Gender" >
+                <cellValueFactory>
+                    <PropertyValueFactory property="gender" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <!--<TableColumn fx:id="cls" prefWidth="101.0" text="Class" />-->
+            <TableColumn editable="true" fx:id="cls" prefWidth="101.0" text="Class">
+                <cellValueFactory>
+                    <PropertyValueFactory property="cls" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <!--<TableColumn fx:id="dob" prefWidth="107.0" text="Date Of Birth" />-->
+            <TableColumn editable="true" fx:id="dob" prefWidth="107.0" text="Date Of Birth">
+                <cellValueFactory>
+                    <PropertyValueFactory property="dob" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <TableColumn fx:id="doj" prefWidth="102.0" text="Date Of Join" />
+<!--            <TableColumn editable="true" ffx:id="doj" prefWidth="102.0" text="Date Of Join">
+                <cellValueFactory>
+                    <PropertyValueFactory property="doj" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>-->
+            <!--<TableColumn fx:id="phone" prefWidth="126.0" text="Phone Number" />-->
+            <TableColumn editable="true" fx:id="phone" prefWidth="126.0" text="Phone Number">
+                <cellValueFactory>
+                    <PropertyValueFactory property="phone" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <TableColumn fx:id="age" prefWidth="83.0" text="Age" />
+<!--            <TableColumn editable="true" fx:id="age" prefWidth="83.0" text="Age">
+                <cellValueFactory>
+                    <PropertyValueFactory property="age" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>-->
+            <TableColumn fx:id="action" prefWidth="150.0" text="Action" />
         </columns>
       </TableView>
+      
    </children>
-</AnchorPane>-->
+</AnchorPane>

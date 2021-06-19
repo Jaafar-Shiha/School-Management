@@ -4,15 +4,15 @@ public class MainController
 {
     private StudentController studentController;
     private TeacherController teacherController;
-    private CourseController courseController;
+    private CourseGradeController courseGradeController;
     
     public MainController( StudentController studentController,
                            TeacherController teacherController,
-                           CourseController courseController )
+                           CourseGradeController courseGradeController )
     {
         this.studentController = studentController;
         this.teacherController = teacherController;
-        this.courseController = courseController;
+        this.courseGradeController = courseGradeController;
     }
     
     
@@ -52,16 +52,16 @@ public class MainController
     /**
      * @return the courseController
      */
-    public CourseController getCourseController() 
+    public CourseGradeController getCourseGradeController() 
     {
-        return courseController;
+        return courseGradeController;
     }
 
     /**
      * @param courseController the courseController to set
      */
-    public void setCourseController(CourseController courseController) 
+    public void setCourseGradeController(CourseGradeController courseGradeController) 
     {
-        this.courseController = courseController;
+        this.courseGradeController = courseGradeController;
     }
 }

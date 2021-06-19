@@ -22,7 +22,6 @@ public class SchoolManagement extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("view/Dashboard.fxml"));
         
         Scene scene = new Scene(root);
-        
         stage.setScene(scene);
         stage.show();
     }

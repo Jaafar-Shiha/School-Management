@@ -2,6 +2,7 @@ package main.model;
 
 public class CourseGrade 
 {
+    private int id;
     private Student student;
     private Course course;
     private byte midterm;
@@ -32,6 +33,9 @@ public class CourseGrade
               courseGrade.getFinalGrade() );
     }
 
+    public int getId() { return this.id; }
+    public void setId( int id ) { this.id = id; }
+    
     public Student getStudent() { return this.student; }
     public void setStudent(Student student) { this.student = student; }
 

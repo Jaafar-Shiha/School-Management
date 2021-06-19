@@ -15,7 +15,8 @@ public class Teacher extends Person
                     Date dateOfJoin,
                     String phone,
                     byte age,
-                    String email )
+                    String email
+                    )
     {
         super( id, 
                firstName, 
@@ -23,7 +24,8 @@ public class Teacher extends Person
                gender, 
                dateOfJoin, 
                phone, 
-               age );
+               age
+                );
         
         this.email = email;
     }
@@ -37,9 +39,10 @@ public class Teacher extends Person
               teacher.getDateOfJoin(),
               teacher.getPhone(),
               teacher.getAge(),
-              teacher.getEmail() );
+              teacher.getEmail()
+              );
     }
     
-    private String getEmail() { return this.email; }
-    private void setEmail( String email ){ this.email = email; }
+    public String getEmail() { return this.email; }
+    public void setEmail( String email ){ this.email = email; }
 }

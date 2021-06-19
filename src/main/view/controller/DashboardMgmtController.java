@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.controller.MainController;
 
@@ -31,20 +32,26 @@ public class DashboardMgmtController implements Initializable {
     
     
    @FXML
+    private AnchorPane children;
+   
+   @FXML
     private AnchorPane root;
+   
+   @FXML
+    private Text title;
+
 
     @FXML
     void openStudentMgmtPage() {
          try {
+             title.setText("Students");
             AnchorPane studentMgmt = FXMLLoader.load(getClass().getClassLoader().getResource("main/view/Students.fxml"));
-            root.getChildren().setAll(studentMgmt);
-        
-
+            children.getChildren().setAll(studentMgmt);
         }catch(IOException e){
-            System.out.println("ears" + e);
+            System.out.println( e);
         }
         
-        }
     }
+}
 
   

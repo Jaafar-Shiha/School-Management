@@ -1,16 +1,17 @@
 package main.controller;
 
 import java.util.List;
-import main.dao.TeacherDao;
-import main.model.Teacher;
+import main.dao.CourseGradeDao;
+import main.model.CourseGrade;
 
-public class TeacherController extends AbstractController
+public class CourseGradeController extends AbstractController
 {
-    public TeacherController( TeacherDao teacherDao )
+    public CourseGradeController( CourseGradeDao courseDao )
     {
-        super( teacherDao );
+        super( courseDao );
     }
     
+
     
     @Override
     public List retrieveAll()
@@ -27,30 +28,30 @@ public class TeacherController extends AbstractController
     @Override
     public List retrieve( Object model )
     {
-        return super.getDao().retrieve(model);
+        return super.getDao().retrieve( model );
     }
     
     @Override
     public void addButtonHandler( Object model ) 
     {
-        Teacher teacher = (Teacher) model;
+        CourseGrade courseGeade = (CourseGrade) model;
         
-        super.getDao().add( teacher );
+        super.getDao().add(courseGeade );
     }
 
     @Override
     public void updateButtonHandler( Object model ) 
     {
-        Teacher teacher = (Teacher) model;
+        CourseGrade courseGeade = (CourseGrade) model;
         
-        super.getDao().update( teacher );
+        super.getDao().update(courseGeade );
     }
 
     @Override
     public void deleteButtonHandler( Object model ) 
     {
-        Teacher teacher = (Teacher) model;
+        CourseGrade courseGeade = (CourseGrade) model;
         
-        super.getDao().delete( teacher );
+        super.getDao().delete( courseGeade );
     }
 }

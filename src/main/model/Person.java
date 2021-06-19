@@ -11,7 +11,7 @@ public abstract class Person
     private Date dateOfJoin;
     private String phone;
     private byte age;
-    
+
     public Person(){ }
     
     public Person( int id,
@@ -20,7 +20,8 @@ public abstract class Person
                     String gender,
                     Date dateOfJoin,
                     String phone,
-                    byte age )
+                    byte age
+                    )
     {
         this.id = id;
         this.firstName = firstName;
@@ -29,6 +30,7 @@ public abstract class Person
         this.dateOfJoin = dateOfJoin;
         this.phone = phone;
         this.age = age;
+
     }
     
     public Person( Person person )
@@ -63,4 +65,5 @@ public abstract class Person
 
     public byte getAge() { return this.age; }
     public void setAge(byte age) { this.age = age; }
+    
 }

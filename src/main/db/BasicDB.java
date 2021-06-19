@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 //This class will be used as the low-level interface with the database
 public class BasicDB 
@@ -19,7 +18,7 @@ public class BasicDB
     /**
      * Represents the URL of the database which the application will connect to.
      */
-    private static final String DATABASE_URL = "jdbc:mysql://localhost/library";
+    private static final String DATABASE_URL = "jdbc:mysql://localhost/schoolManagement";
     
     /**
      * Represents the username of the database account.
@@ -29,7 +28,7 @@ public class BasicDB
     /**
      * Represents the password of the database account.
      */
-    private static final String DATABASE_PASSWORD = "";
+    private static final String DATABASE_PASSWORD = "شيةهىشيةهى123";
     
     /**
      * Represents the connection object that will be used to initialize a new 
@@ -104,11 +103,11 @@ public class BasicDB
 			
             //Close the connection
             disconnect();
-            
             return result;
         }
         catch(SQLException ex)
         {
+        
             ex.printStackTrace();
         }
         

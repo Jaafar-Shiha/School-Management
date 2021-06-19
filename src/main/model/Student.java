@@ -21,7 +21,8 @@ public class Student extends Person
                     Date dateOfBirth,
                     Date dateOfJoin,
                     String phone,
-                    byte age )
+                    byte age
+                     )
     {
         super( id, 
                firstName, 
@@ -29,7 +30,8 @@ public class Student extends Person
                gender, 
                dateOfJoin, 
                phone, 
-               age );
+               age
+               );
         
         this.fatherName = fatherName;
         this.motherName = motherName;
@@ -49,7 +51,8 @@ public class Student extends Person
               student.getDateOfBirth(),
               student.getDateOfJoin(),
               student.getPhone(),
-              student.getAge() );
+              student.getAge()
+              );
     }
 
 
