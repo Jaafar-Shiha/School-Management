@@ -1,8 +1,9 @@
 package main.dao;
 
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import javafx.collections.ObservableList;
 import main.db.BasicDB;
@@ -30,12 +31,16 @@ public class TeacherDao implements IDAO
     {
         String query = "{call getAllTeachers() }";
         
-        ResultSet resultSet = BasicDB.call(query);
+        try
+        {
+//        ResultSet resultSet = BasicDB.call(query);
+            CallableStatement callableStatement = BasicDB.getConnection()
+                                                         .prepareCall( query );
+
+            ResultSet resultSet = BasicDB.call( callableStatement );
         
         this.teachers.clear();
         
-        try
-        {
             while( resultSet.next() )
             {
                 int id = resultSet.getInt(1);
@@ -68,14 +73,21 @@ public class TeacherDao implements IDAO
     @Override
     public Object retrieveOne( int id )
     {
-        String query = "{call getTeacher(" + id + ") }";
-        
-        ResultSet resultSet = BasicDB.call(query);
-        
-        this.teachers.clear();
+//        String query = "{call getTeacher(" + id + ") }";
+        String query = "{call getTeacher(?) }";
         
         try
         {
+//        ResultSet resultSet = BasicDB.call(query);
+            CallableStatement callableStatement = BasicDB.getConnection()
+                                                         .prepareCall( query );
+            
+            callableStatement.setInt( 1 , id );
+
+            ResultSet resultSet = BasicDB.call( callableStatement );
+
+            this.teachers.clear();
+        
             if( resultSet.next() )
             {
                 String firstName = resultSet.getString(2);
@@ -117,17 +129,39 @@ public class TeacherDao implements IDAO
     {
         Teacher teacher = (Teacher) model;
         
-        String query = "{call addTeacherToSchool(" + 
-                teacher.getFirstName() + 
-                teacher.getLastName() + 
-                teacher.getGender() +
-                teacher.getDateOfJoin() +
-                teacher.getPhone() +
-                teacher.getAge() +
-                teacher.getEmail() +
-                ") }";
+//        String query = "{call addTeacherToSchool(" + 
+//                teacher.getFirstName() + 
+//                teacher.getLastName() + 
+//                teacher.getGender() +
+//                teacher.getDateOfJoin() +
+//                teacher.getPhone() +
+//                teacher.getAge() +
+//                teacher.getEmail() +
+//                ") }";
+//        
+//        BasicDB.callVoid(query);
         
-        BasicDB.callVoid(query);
+        String query = "{call addTeacherToSchool(?, ?, ?, ?, ?, ?, ?) }";
+        
+        try
+        {
+            CallableStatement callableStatement = BasicDB.getConnection()
+                                                         .prepareCall( query );
+        
+            callableStatement.setString( 1 , teacher.getFirstName() );
+            callableStatement.setString( 2 , teacher.getLastName() );
+            callableStatement.setString( 3 , teacher.getGender() );
+            callableStatement.setDate( 4 , teacher.getDateOfJoin() );
+            callableStatement.setString( 5 , teacher.getPhone() );
+            callableStatement.setInt( 6 , teacher.getAge() );
+            callableStatement.setString( 7 , teacher.getEmail() );
+
+            BasicDB.callVoid(callableStatement);
+        }
+        catch( SQLException sqle )
+        {
+            sqle.printStackTrace();
+        }
     }
     
     @Override
@@ -135,18 +169,41 @@ public class TeacherDao implements IDAO
     {
         Teacher teacher = (Teacher) model;
         
-        String query = "{call updateTeacherInSchool(" + 
-                teacher.getId()+ 
-                teacher.getFirstName() + 
-                teacher.getLastName() + 
-                teacher.getGender() +
-                teacher.getDateOfJoin() +
-                teacher.getPhone() +
-                teacher.getAge() +
-                teacher.getEmail() +
-                ") }";
+//        String query = "{call updateTeacherInSchool(" + 
+//                teacher.getId()+ 
+//                teacher.getFirstName() + 
+//                teacher.getLastName() + 
+//                teacher.getGender() +
+//                teacher.getDateOfJoin() +
+//                teacher.getPhone() +
+//                teacher.getAge() +
+//                teacher.getEmail() +
+//                ") }";
+//        
+//        BasicDB.callVoid(query);
         
-        BasicDB.callVoid(query);
+        String query = "{call updateTeacherInSchool(?, ?, ?, ?, ?, ?, ?, ?) }";
+        
+        try
+        {
+            CallableStatement callableStatement = BasicDB.getConnection()
+                                                         .prepareCall( query );
+        
+            callableStatement.setInt( 1 , teacher.getId() );
+            callableStatement.setString( 2 , teacher.getFirstName() );
+            callableStatement.setString( 3 , teacher.getLastName() );
+            callableStatement.setString( 4 , teacher.getGender() );
+            callableStatement.setDate( 5 , teacher.getDateOfJoin() );
+            callableStatement.setString( 6 , teacher.getPhone() );
+            callableStatement.setInt( 7 , teacher.getAge() );
+            callableStatement.setString( 8 , teacher.getEmail() );
+
+            BasicDB.callVoid(callableStatement);
+        }
+        catch( SQLException sqle )
+        {
+            sqle.printStackTrace();
+        }
     }
     
     @Override
@@ -154,8 +211,23 @@ public class TeacherDao implements IDAO
     {
         Teacher teacher = (Teacher) model;
         
-        String query = "{call deleteTeacherInTheSchool(" + teacher.getId() + ") }";
+//        String query = "{call deleteTeacherInTheSchool(" + teacher.getId() + ") }";
+        String query = "{call deleteTeacherInTheSchool(?) }";
         
-        BasicDB.callVoid(query);
+        try
+        {
+            CallableStatement callableStatement = BasicDB.getConnection()
+                                                         .prepareCall( query );
+        
+            callableStatement.setInt( 1 , teacher.getId() );
+
+            BasicDB.callVoid(callableStatement);
+        }
+        catch( SQLException sqle )
+        {
+            sqle.printStackTrace();
+        }
+        
+//        BasicDB.callVoid(query);
     }
 }

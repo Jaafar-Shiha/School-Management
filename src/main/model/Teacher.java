@@ -1,6 +1,6 @@
 package main.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Teacher extends Person
 {
