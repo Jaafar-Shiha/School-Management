@@ -1,28 +1,31 @@
 package main.dao;
 
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
+import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
-import javafx.collections.ObservableList;
-import javafx.scene.control.Hyperlink;
 import main.model.Student;
 import main.db.BasicDB;
 
 public class StudentDao implements IDAO
 {
-    private ObservableList<Student> students;
+    private List<Student> students;
     
-    public StudentDao() {}
+    public StudentDao() 
+    { 
+        this.students = new LinkedList<>(); 
+    }
     
-    public StudentDao( ObservableList<Student> students ) 
+    public StudentDao( List<Student> students ) 
     {
         this.students = students;
     }
     
-    public ObservableList<Student> getStudents() { return this.students; }
+    public List<Student> getStudents() { return this.students; }
     
-    public void setStudents( ObservableList<Student> students ) { this.students = students; }
+    public void setStudents( List<Student> students ) { this.students = students; }
     
     
     
@@ -31,11 +34,15 @@ public class StudentDao implements IDAO
     {
         String query = "{call getAllStudents() }";
         
-        ResultSet resultSet = BasicDB.call(query);
-
-        this.students.clear();
         try
         {
+            CallableStatement callableStatement = BasicDB.getConnection()
+                                                         .prepareCall( query );
+
+            ResultSet resultSet = BasicDB.call( callableStatement );
+
+            this.students.clear();
+
             while( resultSet.next() )
             {
                 int id = resultSet.getInt(1);
@@ -54,10 +61,11 @@ public class StudentDao implements IDAO
                                                      lastName, fatherName, 
                                                      motherName, gender, 
                                                      classId, dateOfBirth, 
-                                                     dateOfJoin, phone, age);
-                
+                                                     dateOfJoin, phone, age );
+
                 this.students.add( resultStudent );
             }
+            
             return this.students;
         }
         catch( SQLException sqle )
@@ -71,14 +79,21 @@ public class StudentDao implements IDAO
     @Override
     public Object retrieveOne( int id )
     {
-        String query = "{call getStudent(" + id + ") }";
-        
-        ResultSet resultSet = BasicDB.call(query);
-        
-        this.students.clear();
+        String query = "{call getStudent(?) }";
         
         try
         {
+            CallableStatement callableStatement = BasicDB.getConnection()
+                                                         .prepareCall( query );
+            
+            callableStatement.setInt( 1 , id );
+
+            ResultSet resultSet = BasicDB.call( callableStatement );
+
+//            ResultSet resultSet = BasicDB.call(query);
+
+            this.students.clear();
+        
             if( resultSet.next() )
             {
                 String firstName = resultSet.getString(2);
@@ -91,12 +106,12 @@ public class StudentDao implements IDAO
                 Date dateOfJoin = resultSet.getDate(9);
                 String phone = resultSet.getString(10);
                 byte age = resultSet.getByte(11);
-
+                
                 Student resultStudent = new Student( id, firstName, 
                                                      lastName, fatherName, 
                                                      motherName, gender, 
                                                      classId, dateOfBirth, 
-                                                     dateOfJoin, phone, age);
+                                                     dateOfJoin, phone, age );
                 
                 return resultStudent;
             }
@@ -124,20 +139,45 @@ public class StudentDao implements IDAO
     {
         Student student = (Student) model;
         
-        String query = "{call addStudentToSchool(" + 
-                student.getFirstName() + 
-                student.getLastName() + 
-                student.getFatherName() +
-                student.getMotherName() +
-                student.getGender() +
-                student.getClassId() +
-                student.getDateOfBirth() +
-                student.getDateOfJoin() +
-                student.getPhone() +
-                student.getAge() +
-                ") }";
+        String query = "{call addStudentToSchool(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) }";
         
-        BasicDB.callVoid(query);
+        try
+        {
+            CallableStatement callableStatement = BasicDB.getConnection()
+                                                     .prepareCall( query );
+        
+            callableStatement.setString( 1 , student.getFirstName() );
+            callableStatement.setString( 2 , student.getLastName() );
+            callableStatement.setString( 3 , student.getFatherName() );
+            callableStatement.setString( 4 , student.getMotherName() );
+            callableStatement.setString( 5 , student.getGender() );
+            callableStatement.setInt( 6 , student.getClassId() );
+            callableStatement.setDate( 7 , student.getDateOfBirth() );
+            callableStatement.setDate( 8 , student.getDateOfJoin() );
+            callableStatement.setString( 9 , student.getPhone() );
+            callableStatement.setInt( 10 , student.getAge() );
+
+    //        String query = "{call addStudentToSchool(" + 
+    //                student.getFirstName() + 
+    //                student.getLastName() + 
+    //                student.getFatherName() +
+    //                student.getMotherName() +
+    //                student.getGender() +
+    //                student.getClassId() +
+    //                student.getDateOfBirth() +
+    //                student.getDateOfJoin() +
+    //                student.getPhone() +
+    //                student.getAge() +
+    //                ") }";
+
+            BasicDB.callVoid( callableStatement );
+        }
+        catch( SQLException sqle )
+        {
+            sqle.printStackTrace();
+        }
+        
+        
     }
     
     @Override
@@ -145,21 +185,46 @@ public class StudentDao implements IDAO
     {
         Student student = (Student) model;
         
-        String query = "{call updateStudentInSchool(" + 
-                student.getId() + 
-                student.getFirstName() + 
-                student.getLastName() + 
-                student.getFatherName() +
-                student.getMotherName() +
-                student.getGender() +
-                student.getClassId() +
-                student.getDateOfBirth() +
-                student.getDateOfJoin() +
-                student.getPhone() +
-                student.getAge() +
-                ") }";
+        String query = "{call updateStudentInSchool(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) }";
         
-        BasicDB.callVoid(query);
+        try
+        {
+            CallableStatement callableStatement = BasicDB.getConnection()
+                                                     .prepareCall( query );
+        
+            callableStatement.setInt( 1 , student.getId() );
+            callableStatement.setString( 2 , student.getFirstName() );
+            callableStatement.setString( 3 , student.getLastName() );
+            callableStatement.setString( 4 , student.getFatherName() );
+            callableStatement.setString( 5 , student.getMotherName() );
+            callableStatement.setString( 6 , student.getGender() );
+            callableStatement.setInt( 7 , student.getClassId() );
+            callableStatement.setDate(8 , student.getDateOfBirth() );
+            callableStatement.setDate( 9 , student.getDateOfJoin() );
+            callableStatement.setString( 10 , student.getPhone() );
+            callableStatement.setInt( 11 , student.getAge() );
+
+    //        String query = "{call updateStudentInSchool(" + 
+    //                student.getId() + 
+    //                student.getFirstName() + 
+    //                student.getLastName() + 
+    //                student.getFatherName() +
+    //                student.getMotherName() +
+    //                student.getGender() +
+    //                student.getClassId() +
+    //                student.getDateOfBirth() +
+    //                student.getDateOfJoin() +
+    //                student.getPhone() +
+    //                student.getAge() +
+    //                ") }";
+
+            BasicDB.callVoid(callableStatement);
+        }
+        catch( SQLException sqle )
+        {
+            sqle.printStackTrace();
+        }
+        
     }
     
     @Override
@@ -167,8 +232,22 @@ public class StudentDao implements IDAO
     {
         Student student = (Student) model;
         
-        String query = "{call deleteStudentInTheSchool(" + student.getId() + ") }";
+//        String query = "{call deleteStudentInTheSchool(" + student.getId() + ") }";
+        String sqlcall = "{call deleteStudentInTheSchool(?) }";
         
-        BasicDB.callVoid(query);
+        try
+        {
+            CallableStatement callableStatement = BasicDB.getConnection()
+                                                     .prepareCall( sqlcall );
+        
+            callableStatement.setInt( 1 , student.getId() );
+
+            BasicDB.callVoid(callableStatement);
+        }
+        catch( SQLException sqle )
+        {
+            sqle.printStackTrace();
+        }
+        
     }
 }

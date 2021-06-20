@@ -1,7 +1,6 @@
 package main.dao;
 
 import java.util.List;
-import javafx.collections.ObservableList;
 
 public interface IDAO 
 {

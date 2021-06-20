@@ -1,7 +1,6 @@
 package main.controller;
 
 import java.util.List;
-import javafx.collections.ObservableList;
 import main.dao.StudentDao;
 import main.model.Student;
 

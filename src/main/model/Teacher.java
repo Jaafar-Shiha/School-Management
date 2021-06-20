@@ -1,6 +1,6 @@
 package main.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Teacher extends Person
 {
@@ -15,8 +15,7 @@ public class Teacher extends Person
                     Date dateOfJoin,
                     String phone,
                     byte age,
-                    String email
-                    )
+                    String email )
     {
         super( id, 
                firstName, 
@@ -24,8 +23,7 @@ public class Teacher extends Person
                gender, 
                dateOfJoin, 
                phone, 
-               age
-                );
+               age );
         
         this.email = email;
     }
@@ -39,8 +37,7 @@ public class Teacher extends Person
               teacher.getDateOfJoin(),
               teacher.getPhone(),
               teacher.getAge(),
-              teacher.getEmail()
-              );
+              teacher.getEmail() );
     }
     
     public String getEmail() { return this.email; }

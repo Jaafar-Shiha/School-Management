@@ -19,16 +19,19 @@ public class BasicDB
      * Represents the URL of the database which the application will connect to.
      */
     private static final String DATABASE_URL = "jdbc:mysql://localhost/schoolManagement";
+    private static final String REMOTE_DATABASE_URL = "jdbc:mysql://ur3f2k6ufz2x3fwb:DF4nqc0qQx5yiV207lM6@bhhjcxivwsj30hljdcnj-mysql.services.clever-cloud.com:3306/bhhjcxivwsj30hljdcnj";
     
     /**
      * Represents the username of the database account.
      */
     private static final String DATABASE_USER = "root";
+    private static final String REMOTE_DATABASE_USER = "ur3f2k6ufz2x3fwb";
     
     /**
      * Represents the password of the database account.
      */
-    private static final String DATABASE_PASSWORD = "شيةهىشيةهى123";
+    private static final String DATABASE_PASSWORD = "";
+    private static final String REMOTE_DATABASE_PASSWORD = "DF4nqc0qQx5yiV207lM6";
     
     /**
      * Represents the connection object that will be used to initialize a new 
@@ -50,9 +53,12 @@ public class BasicDB
             Class.forName( DRIVER );
             
             //Initilaise the connection
-            connection = DriverManager.getConnection( DATABASE_URL, 
-                                                      DATABASE_USER, 
-                                                      DATABASE_PASSWORD );
+//            connection = DriverManager.getConnection( DATABASE_URL, 
+//                                                      DATABASE_USER, 
+//                                                      DATABASE_PASSWORD );
+            setConnection(DriverManager.getConnection( REMOTE_DATABASE_URL, 
+                    REMOTE_DATABASE_USER,
+                    REMOTE_DATABASE_PASSWORD ));
         }
         catch(ClassNotFoundException | SQLException ex)
         {
@@ -67,7 +73,7 @@ public class BasicDB
     {
         try
         {
-            connection.close();
+            getConnection().close();
         }
         catch(SQLException ex)
         {
@@ -81,7 +87,8 @@ public class BasicDB
      * @param query
      * @return 
      */
-    public static ResultSet call( String query )
+//    public static ResultSet call( String query )
+    public static ResultSet call( CallableStatement callableStatement )
     {
         //First connect to the database server
         connect();
@@ -89,7 +96,7 @@ public class BasicDB
         try
         {
             //Create the Statement object
-            CallableStatement callableStatement = connection.prepareCall( query );
+//            CallableStatement callableStatement = getConnection().prepareCall( query );
 			
             callableStatement.execute();
 			
@@ -103,11 +110,11 @@ public class BasicDB
 			
             //Close the connection
             disconnect();
+            
             return result;
         }
         catch(SQLException ex)
         {
-        
             ex.printStackTrace();
         }
         
@@ -119,7 +126,8 @@ public class BasicDB
      * @param query
      * @return 
      */
-    public static void callVoid( String query )
+//    public static void callVoid( String query )
+    public static void callVoid( CallableStatement callableStatement )
     {
         //First connect to the database server
         connect();
@@ -127,7 +135,7 @@ public class BasicDB
         try
         {
             //Create the Statement object
-            CallableStatement callableStatement = connection.prepareCall( query );
+//            CallableStatement callableStatement = getConnection().prepareCall( query );
 			
             callableStatement.execute();
 			
@@ -140,4 +148,20 @@ public class BasicDB
             ex.printStackTrace();
         }
     }
+
+    /**
+     * @return the connection
+     */
+    public static Connection getConnection() {
+        return connection;
+    }
+
+    /**
+     * @param aConnection the connection to set
+     */
+    public static void setConnection(Connection aConnection) {
+        connection = aConnection;
+    }
+    
+    
 }
