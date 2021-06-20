@@ -5,7 +5,6 @@
  */
 package main;
 
-import java.sql.Date;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +23,7 @@ import main.model.Teacher;
  */
 public class SchoolManagement extends Application {
     
+   
     @Override
     public void init()
     {
@@ -60,7 +60,6 @@ public class SchoolManagement extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("view/Dashboard.fxml"));
         
         Scene scene = new Scene(root);
-        
         stage.setScene(scene);
         stage.show();
     }
