@@ -37,6 +37,29 @@ public class Student extends Person
         this.dateOfBirth = dateOfBirth;
     }
     
+    public Student( String firstName,
+                    String lastName,
+                    String fatherName,
+                    String motherName,
+                    String gender,
+                    int classId,
+                    Date dateOfBirth,
+                    Date dateOfJoin,
+                    String phone,
+                    byte age )
+    {
+        this( 0, firstName, 
+                 lastName, 
+                 fatherName, 
+                 motherName, 
+                 gender, 
+                 classId, 
+                 dateOfBirth, 
+                 dateOfJoin, 
+                 phone, 
+                 age );
+    }
+    
     public Student( Student student )
     {
         this( student.getId(),
@@ -51,6 +74,7 @@ public class Student extends Person
               student.getPhone(),
               student.getAge() );
     }
+    
 
 
     public String getFatherName() { return this.fatherName; }

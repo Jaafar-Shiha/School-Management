@@ -28,6 +28,23 @@ public class Teacher extends Person
         this.email = email;
     }
     
+    public Teacher( String firstName,
+                    String lastName,
+                    String gender,
+                    Date dateOfJoin,
+                    String phone,
+                    byte age,
+                    String email )
+    {
+        this( 0, firstName, 
+                 lastName, 
+                 gender, 
+                 dateOfJoin, 
+                 phone, 
+                 age, 
+                 email );
+    }
+    
     public Teacher( Teacher teacher )
     {
         this( teacher.getId(),
