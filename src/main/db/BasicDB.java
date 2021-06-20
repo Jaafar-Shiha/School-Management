@@ -153,6 +153,10 @@ public class BasicDB
      * @return the connection
      */
     public static Connection getConnection() {
+        if( connection == null )
+        {
+            connect();
+        }
         return connection;
     }
 
@@ -160,6 +164,7 @@ public class BasicDB
      * @param aConnection the connection to set
      */
     public static void setConnection(Connection aConnection) {
+        
         connection = aConnection;
     }
     

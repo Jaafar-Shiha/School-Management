@@ -137,9 +137,7 @@ public class StudentsMgmtController implements Initializable {
                 }
             }));
             
-            
             phone.setCellValueFactory(new PropertyValueFactory<>("phone"));
-            
             
             age.setCellValueFactory(new PropertyValueFactory<>("age"));
             age.setCellFactory(TextFieldTableCell.<Student, Byte>forTableColumn(new StringConverter<Byte>() {
