@@ -152,11 +152,13 @@ public class BasicDB
     /**
      * @return the connection
      */
-    public static Connection getConnection() {
+    public static Connection getConnection() 
+    {
         if( connection == null )
         {
             connect();
         }
+        
         return connection;
     }
 

@@ -129,18 +129,6 @@ public class TeacherDao implements IDAO
     {
         Teacher teacher = (Teacher) model;
         
-//        String query = "{call addTeacherToSchool(" + 
-//                teacher.getFirstName() + 
-//                teacher.getLastName() + 
-//                teacher.getGender() +
-//                teacher.getDateOfJoin() +
-//                teacher.getPhone() +
-//                teacher.getAge() +
-//                teacher.getEmail() +
-//                ") }";
-//        
-//        BasicDB.callVoid(query);
-        
         String query = "{call addTeacherToSchool(?, ?, ?, ?, ?, ?, ?) }";
         
         try
@@ -168,19 +156,6 @@ public class TeacherDao implements IDAO
     public void update( Object model )
     {
         Teacher teacher = (Teacher) model;
-        
-//        String query = "{call updateTeacherInSchool(" + 
-//                teacher.getId()+ 
-//                teacher.getFirstName() + 
-//                teacher.getLastName() + 
-//                teacher.getGender() +
-//                teacher.getDateOfJoin() +
-//                teacher.getPhone() +
-//                teacher.getAge() +
-//                teacher.getEmail() +
-//                ") }";
-//        
-//        BasicDB.callVoid(query);
         
         String query = "{call updateTeacherInSchool(?, ?, ?, ?, ?, ?, ?, ?) }";
         
@@ -228,6 +203,5 @@ public class TeacherDao implements IDAO
             sqle.printStackTrace();
         }
         
-//        BasicDB.callVoid(query);
     }
 }

@@ -58,7 +58,8 @@ public class MainController
     }
 
     /**
-     * @param courseController the courseController to set
+     * 
+     * @param courseGradeController 
      */
     public void setCourseGradeController(CourseGradeController courseGradeController) 
     {

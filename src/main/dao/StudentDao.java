@@ -157,18 +157,6 @@ public class StudentDao implements IDAO
             callableStatement.setString( 9 , student.getPhone() );
             callableStatement.setInt( 10 , student.getAge() );
 
-    //        String query = "{call addStudentToSchool(" + 
-    //                student.getFirstName() + 
-    //                student.getLastName() + 
-    //                student.getFatherName() +
-    //                student.getMotherName() +
-    //                student.getGender() +
-    //                student.getClassId() +
-    //                student.getDateOfBirth() +
-    //                student.getDateOfJoin() +
-    //                student.getPhone() +
-    //                student.getAge() +
-    //                ") }";
 
             BasicDB.callVoid( callableStatement );
         }
@@ -204,19 +192,6 @@ public class StudentDao implements IDAO
             callableStatement.setString( 10 , student.getPhone() );
             callableStatement.setInt( 11 , student.getAge() );
 
-    //        String query = "{call updateStudentInSchool(" + 
-    //                student.getId() + 
-    //                student.getFirstName() + 
-    //                student.getLastName() + 
-    //                student.getFatherName() +
-    //                student.getMotherName() +
-    //                student.getGender() +
-    //                student.getClassId() +
-    //                student.getDateOfBirth() +
-    //                student.getDateOfJoin() +
-    //                student.getPhone() +
-    //                student.getAge() +
-    //                ") }";
 
             BasicDB.callVoid(callableStatement);
         }
