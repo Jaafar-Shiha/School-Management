@@ -46,7 +46,6 @@ public class BasicDB
     //Functionality
     /**
      * Returns a connection/session to/with a database in MySQL database server.
-     * @return 
      */
     public static void connect()
     {
@@ -60,6 +59,7 @@ public class BasicDB
 //            connection = DriverManager.getConnection( DATABASE_URL, 
 //                                                      DATABASE_USER, 
 //                                                      DATABASE_PASSWORD );
+            
             setConnection(DriverManager.getConnection( REMOTE_DATABASE_URL, 
                     REMOTE_DATABASE_USER,
                     REMOTE_DATABASE_PASSWORD ));
@@ -88,8 +88,8 @@ public class BasicDB
     
     /**
      * Call a specific Stored Procedure in the database.
-     * @param query
-     * @return 
+     * @param callableStatement
+     * @return ResultSet
      */
 //    public static ResultSet call( String query )
     public static ResultSet call( CallableStatement callableStatement )
@@ -113,7 +113,7 @@ public class BasicDB
             result.populate( callableStatement.getResultSet() );
 			
             //Close the connection
-            disconnect();
+//            disconnect();
             
             return result;
         }
@@ -127,8 +127,7 @@ public class BasicDB
     
     /**
      * Call a specific Stored Procedure in the database.
-     * @param query
-     * @return 
+     * @param callableStatement
      */
 //    public static void callVoid( String query )
     public static void callVoid( CallableStatement callableStatement )
@@ -144,7 +143,7 @@ public class BasicDB
             callableStatement.execute();
 			
             //Close the connection
-            disconnect();
+//            disconnect();
             
         }
         catch(SQLException ex)
@@ -169,10 +168,9 @@ public class BasicDB
     /**
      * @param aConnection the connection to set
      */
-    public static void setConnection(Connection aConnection) {
-        
+    public static void setConnection(Connection aConnection) 
+    {
         connection = aConnection;
     }
-    
     
 }

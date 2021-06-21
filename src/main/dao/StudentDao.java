@@ -213,7 +213,6 @@ public class StudentDao implements IDAO
     {
         Student student = (Student) model;
         
-//        String query = "{call deleteStudentInTheSchool(" + student.getId() + ") }";
         String sqlcall = "{call deleteStudentInTheSchool(?) }";
         
         try

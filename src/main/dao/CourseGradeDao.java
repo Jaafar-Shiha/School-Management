@@ -72,15 +72,6 @@ public class CourseGradeDao implements IDAO
             sqle.printStackTrace();
         }
         
-        
-//        String query = "{call addGradeToStudent(" + 
-//                courseGrade.getStudent().getId() + 
-//                courseGrade.getCourse().getId() +
-//                courseGrade.getMidterm() +
-//                courseGrade.getExam() +
-//                ") }";
-        
-//        BasicDB.callVoid( query );
     }
     
     @Override
@@ -108,15 +99,6 @@ public class CourseGradeDao implements IDAO
             sqle.printStackTrace();
         }
         
-//        String query = "{call updateGradeOfStudent(" + 
-//                courseGrade.getId() + 
-//                courseGrade.getStudent().getId() + 
-//                courseGrade.getCourse().getId() +
-//                courseGrade.getMidterm() +
-//                courseGrade.getExam() +
-//                ") }";
-//        
-//        BasicDB.callVoid( query );
     }
     
     @Override

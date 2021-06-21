@@ -37,13 +37,12 @@ public class TeacherDao implements IDAO
         
         try
         {
-//        ResultSet resultSet = BasicDB.call(query);
             CallableStatement callableStatement = BasicDB.getConnection()
                                                          .prepareCall( query );
 
             ResultSet resultSet = BasicDB.call( callableStatement );
         
-        this.teachers.clear();
+            this.teachers.clear();
         
             while( resultSet.next() )
             {
@@ -77,12 +76,10 @@ public class TeacherDao implements IDAO
     @Override
     public Object retrieveOne( int id )
     {
-//        String query = "{call getTeacher(" + id + ") }";
         String query = "{call getTeacher(?) }";
         
         try
         {
-//        ResultSet resultSet = BasicDB.call(query);
             CallableStatement callableStatement = BasicDB.getConnection()
                                                          .prepareCall( query );
             
