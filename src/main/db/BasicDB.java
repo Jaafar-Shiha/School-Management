@@ -8,6 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //This class will be used as the low-level interface with the database
+/**
+ *
+ * @author zaid
+ */
 public class BasicDB 
 {
     /**

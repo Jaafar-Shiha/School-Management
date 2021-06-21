@@ -2,6 +2,10 @@ package main.dao;
 
 import java.util.List;
 
+/**
+ *
+ * @author zaid
+ */
 public interface IDAO 
 {
     /**

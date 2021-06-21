@@ -2,6 +2,10 @@ package main.model;
 
 import java.sql.Date;
 
+/**
+ *
+ * @author zaid
+ */
 public class Teacher extends Person
 {
     private String email;

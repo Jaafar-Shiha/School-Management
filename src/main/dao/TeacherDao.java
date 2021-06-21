@@ -9,6 +9,10 @@ import javafx.collections.ObservableList;
 import main.db.BasicDB;
 import main.model.Teacher;
 
+/**
+ *
+ * @author zaid
+ */
 public class TeacherDao implements IDAO
 {
     private ObservableList<Teacher> teachers;

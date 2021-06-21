@@ -5,17 +5,20 @@
  */
 package main;
 
+import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.controller.ClassController;
 import main.controller.StudentController;
 import main.controller.TeacherController;
+import main.dao.ClassDao;
 import main.dao.StudentDao;
 import main.dao.TeacherDao;
+import main.model.SchoolClass;
 import main.model.Student;
-import main.model.Teacher;
 
 /**
  *
@@ -27,32 +30,46 @@ public class SchoolManagement extends Application {
     @Override
     public void init()
     {
-//        StudentController sc = new StudentController( new StudentDao() );
-//        
-//        Student s = new Student(1, 
-//                "Ted", "Mosby", 
-//                "ddd", "qqq", 
-//                "male", 2, 
-//                new Date(98, 10, 24), new Date(121, 6, 19), 
-//                "99", (byte)14 );
+        StudentController sc = new StudentController( new StudentDao() );
         
+//        Student s = new Student(4, 
+//                "Marshal", "Ericksen", 
+//                "Marven", "Joudy", 
+//                "male", 10, 
+//                new Date(86, 8, 2), new Date(114, 8, 6), 
+//                "99", (byte)17 );
+//        
 //        sc.addButtonHandler( s );
+//        sc.updateButtonHandler(s);
         
 //        Student toBeDeleted = new Student();
-//        toBeDeleted.setId( 1 );
+//        toBeDeleted.setId( 7 );
 //        sc.deleteButtonHandler( toBeDeleted );
         
-//        TeacherController tc = new TeacherController( new TeacherDao() );
-//        Teacher t = new Teacher(5,
-//                "teacher3First", "teacher3Last", 
-//                "male", new Date(180, 1, 16),
-//                "111", (byte)45, "teacher3@gmail.com" );
-        
+        TeacherController tc = new TeacherController( new TeacherDao() );
+//        Teacher t = new Teacher(1,
+//                "teacherUUUU", "teacherUUUU", 
+//                "female", new Date(193, 2, 17),
+//                "1522", (byte)37, "teacherUUUU@gmail.com" );
+//        
 //        tc.addButtonHandler( t );
+//        tc.updateButtonHandler(t);
         
 //        Teacher toBeDeleted = new Teacher();
-//        toBeDeleted.setId( 2 );
+//        toBeDeleted.setId( 4 );
 //        tc.deleteButtonHandler( toBeDeleted );
+        
+        
+        ClassController cc = new ClassController( new ClassDao() );
+        
+//        List<SchoolClass> cs = cc.retrieveAll();
+//        for( SchoolClass c: cs )
+//        {
+//            System.out.println( c.getId() + "\t" + c.getClassName() + "\t" + c.getLevel().getId() );
+//        }
+//        System.out.println( "\n***********************\n" );
+        
+        System.out.println( "Query Sent" );
     }
     
     @Override

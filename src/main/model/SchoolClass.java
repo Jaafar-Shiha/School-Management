@@ -1,14 +1,18 @@
 package main.model;
 
-public class Class 
+/**
+ *
+ * @author zaid
+ */
+public class SchoolClass 
 {
     private int id;
     private String className;
     private Level level;
     
-    public Class() { }
+    public SchoolClass() { }
     
-    public Class( int id,
+    public SchoolClass( int id,
                   String className,
                   Level level )
     {

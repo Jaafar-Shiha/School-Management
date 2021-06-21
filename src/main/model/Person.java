@@ -2,6 +2,10 @@ package main.model;
 
 import java.sql.Date;
 
+/**
+ *
+ * @author zaid
+ */
 public abstract class Person 
 {
     private int id;

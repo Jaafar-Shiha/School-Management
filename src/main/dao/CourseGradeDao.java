@@ -8,6 +8,10 @@ import main.db.BasicDB;
 import main.model.Course;
 import main.model.CourseGrade;
 
+/**
+ *
+ * @author zaid
+ */
 public class CourseGradeDao implements IDAO
 {
     private ObservableList<Course> courses;

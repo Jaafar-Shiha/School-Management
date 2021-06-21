@@ -1,5 +1,9 @@
 package main.controller;
 
+/**
+ *
+ * @author zaid
+ */
 public class MainController 
 {
     private StudentController studentController;

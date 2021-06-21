@@ -1,5 +1,9 @@
 package main.model;
 
+/**
+ *
+ * @author zaid
+ */
 public class CourseGrade 
 {
     private int id;

@@ -9,6 +9,10 @@ import java.util.List;
 import main.model.Student;
 import main.db.BasicDB;
 
+/**
+ *
+ * @author zaid
+ */
 public class StudentDao implements IDAO
 {
     private List<Student> students;
@@ -90,8 +94,6 @@ public class StudentDao implements IDAO
 
             ResultSet resultSet = BasicDB.call( callableStatement );
 
-//            ResultSet resultSet = BasicDB.call(query);
-
             this.students.clear();
         
             if( resultSet.next() )
@@ -128,7 +130,6 @@ public class StudentDao implements IDAO
     public List retrieve( Object model )
     {
         Student student = (Student) model;
-        
         this.students.clear();
         
         return null;
@@ -144,14 +145,17 @@ public class StudentDao implements IDAO
         try
         {
             CallableStatement callableStatement = BasicDB.getConnection()
-                                                     .prepareCall( query );
+                                                         .prepareCall( query );
         
             callableStatement.setString( 1 , student.getFirstName() );
             callableStatement.setString( 2 , student.getLastName() );
             callableStatement.setString( 3 , student.getFatherName() );
             callableStatement.setString( 4 , student.getMotherName() );
             callableStatement.setString( 5 , student.getGender() );
-            callableStatement.setInt( 6 , student.getClassId() );
+            
+//            callableStatement.setInt( 6 , student.getClassId() );
+            callableStatement.setInt( 6 , student.getSchoolClass().getId() );
+            
             callableStatement.setDate( 7 , student.getDateOfBirth() );
             callableStatement.setDate( 8 , student.getDateOfJoin() );
             callableStatement.setString( 9 , student.getPhone() );
@@ -164,7 +168,6 @@ public class StudentDao implements IDAO
         {
             sqle.printStackTrace();
         }
-        
         
     }
     
@@ -186,7 +189,10 @@ public class StudentDao implements IDAO
             callableStatement.setString( 4 , student.getFatherName() );
             callableStatement.setString( 5 , student.getMotherName() );
             callableStatement.setString( 6 , student.getGender() );
-            callableStatement.setInt( 7 , student.getClassId() );
+            
+//            callableStatement.setInt( 7 , student.getClassId() );
+            callableStatement.setInt( 7 , student.getSchoolClass().getId() );
+            
             callableStatement.setDate(8 , student.getDateOfBirth() );
             callableStatement.setDate( 9 , student.getDateOfJoin() );
             callableStatement.setString( 10 , student.getPhone() );
@@ -213,7 +219,7 @@ public class StudentDao implements IDAO
         try
         {
             CallableStatement callableStatement = BasicDB.getConnection()
-                                                     .prepareCall( sqlcall );
+                                                         .prepareCall( sqlcall );
         
             callableStatement.setInt( 1 , student.getId() );
 

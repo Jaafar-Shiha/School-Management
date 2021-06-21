@@ -4,6 +4,10 @@ import java.util.List;
 import main.dao.TeacherDao;
 import main.model.Teacher;
 
+/**
+ *
+ * @author zaid
+ */
 public class TeacherController extends AbstractController
 {
     public TeacherController( TeacherDao teacherDao )

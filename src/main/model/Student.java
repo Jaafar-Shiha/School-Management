@@ -2,11 +2,18 @@ package main.model;
 
 import java.sql.Date;
 
+/**
+ *
+ * @author zaid
+ */
 public class Student extends Person
 {
     private String fatherName;
     private String motherName;
-    private int classId;
+    
+//    private int classId;
+    private SchoolClass schoolClass;
+    
     private Date dateOfBirth;
     
     public Student(){ }
@@ -33,7 +40,11 @@ public class Student extends Person
         
         this.fatherName = fatherName;
         this.motherName = motherName;
-        this.classId = classId;
+        
+//        this.classId = classId;
+        this.schoolClass = new SchoolClass();
+        this.schoolClass.setId(classId);
+        
         this.dateOfBirth = dateOfBirth;
     }
     
@@ -68,7 +79,10 @@ public class Student extends Person
               student.getFatherName(),
               student.getMotherName(),
               student.getGender(),
-              student.getClassId(),
+              
+//              student.getClassId(),
+              student.getSchoolClass().getId(),
+              
               student.getDateOfBirth(),
               student.getDateOfJoin(),
               student.getPhone(),
@@ -83,8 +97,10 @@ public class Student extends Person
     public String getMotherName() { return this.motherName; }
     public void setMotherName(String motherName) { this.motherName = motherName; }
 
-    public int getClassId() { return this.classId; }
-    public void setClassId(int classId) { this.classId = classId; }
+//    public int getClassId() { return this.classId; }
+//    public void setClassId(int classId) { this.classId = classId; }
+    public SchoolClass getSchoolClass() { return this.schoolClass; }
+    public void setSchoolClass( SchoolClass schoolClass ) { this.schoolClass = schoolClass; }
 
     public Date getDateOfBirth() { return this.dateOfBirth; }
     public void setDateOfBirth(Date dateOfBirth) { this.dateOfBirth = dateOfBirth; }
