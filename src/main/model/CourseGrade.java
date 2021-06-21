@@ -15,17 +15,28 @@ public class CourseGrade
     
     public CourseGrade() { }
     
+    public CourseGrade( int id,
+                        Student student, 
+                        Course course, 
+                        byte midterm, 
+                        byte exam, 
+                        byte finalGrade )
+    {
+        this.id = id;
+        this.student = student;
+        this.course = course;
+        this.midterm = midterm;
+        this.exam = exam;
+        this.finalGrade = finalGrade;
+    }
+    
     public CourseGrade( Student student, 
                         Course course, 
                         byte midterm, 
                         byte exam, 
                         byte finalGrade )
     {
-        this.student = student;
-        this.course = course;
-        this.midterm = midterm;
-        this.exam = exam;
-        this.finalGrade = finalGrade;
+        this(0, student, course, midterm, exam, finalGrade);
     }
     
     public CourseGrade( CourseGrade courseGrade )

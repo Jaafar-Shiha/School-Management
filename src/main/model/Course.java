@@ -9,27 +9,23 @@ public class Course
     private int id;
     private String courseName;
     private int classId;
-    private Teacher teacher;
     
     public Course(){ }
     
     public Course( int id,
                    String courseName,
-                   int classId,
-                   Teacher teacher )
+                   int classId )
     {
         this.id = id;
         this.courseName = courseName;
         this.classId = classId;
-        this.teacher = teacher;
     }
     
     public Course( Course course )
     {
         this( course.getId(),
               course.getCourseName(), 
-              course.getClassId(), 
-              course.getTeacher() );
+              course.getClassId() );
     }
 
     public int getId() { return this.id; }
@@ -41,6 +37,4 @@ public class Course
     public int getClassId() { return this.classId; }
     public void setClassId(int classId) { this.classId = classId; }
 
-    public Teacher getTeacher() { return this.teacher; }
-    public void setTeacher(Teacher teacher) { this.teacher = teacher; }
 }
