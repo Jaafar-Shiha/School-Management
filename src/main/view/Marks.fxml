@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.cell.*?>
+
+<AnchorPane id="root" fx:controller="main.view.controller.MarksMgmtController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <AnchorPane prefHeight="140.0" prefWidth="974.0" styleClass="linear-grad-to-right" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="#f8f8f8" layoutX="345.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marks">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+      <TableView fx:id="marksTable" editable="true" layoutX="179.0" layoutY="153.0" prefHeight="477.0" prefWidth="465.0">
+        <columns>
+          <TableColumn fx:id="courseId" prefWidth="75.0" text="Course ID" />
+          <TableColumn fx:id="midterm" prefWidth="83.0" text="Mid term" />
+            <TableColumn editable="true" fx:id="exam" prefWidth="85.0"  text="Exam">
+                <cellValueFactory>
+                    <PropertyValueFactory property="exam" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <TableColumn editable="true" fx:id="finalGrade" prefWidth="85.0"  text="Final Grade">
+                <cellValueFactory>
+                    <PropertyValueFactory property="finalGrade" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            
+            <TableColumn prefWidth="106.0" text="Action" />
+        </columns>
+      </TableView>
+
+   </children>
+</AnchorPane>

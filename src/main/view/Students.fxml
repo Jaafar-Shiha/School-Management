@@ -6,13 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="829.0" prefWidth="1274.0" stylesheets="@css/students.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.controller.StudentsMgmtController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="829.0" prefWidth="1384.0" stylesheets="@css/students.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.controller.StudentsMgmtController">
    <children>
-      <TableView fx:id="studentsTable" editable="true" layoutX="29.0" layoutY="203.0" prefHeight="477.0" prefWidth="1232.0">
+      <AnchorPane fx:id="children">
+          <TableView fx:id="studentsTable" editable="true" layoutX="29.0" layoutY="203.0" prefHeight="477.0" prefWidth="1342.0">
         <columns>
             <TableColumn fx:id="stID" prefWidth="75.0" text="StID" />
-            <!--<TableColumn editable="true" fx:id="fName" prefWidth="97.0" text="First Name" />-->
             <TableColumn editable="true" fx:id="fName" prefWidth="97.0" text="First Name">
                 <cellValueFactory>
                     <PropertyValueFactory property="fName" />
@@ -21,7 +22,6 @@
                     <TextFieldTableCell fx:factory="forTableColumn" />
                 </cellFactory>
             </TableColumn>
-            <!--<TableColumn fx:id="lName" prefWidth="85.0" text="Last Name" />-->
             <TableColumn editable="true" fx:id="lName" prefWidth="85.0" text="Last Name">
                 <cellValueFactory>
                     <PropertyValueFactory property="lName" />
@@ -30,7 +30,6 @@
                     <TextFieldTableCell fx:factory="forTableColumn" />
                 </cellFactory>
             </TableColumn>
-            <!--<TableColumn fx:id="faName" prefWidth="101.0" text="Father Name" />-->
             <TableColumn editable="true" fx:id="faName" prefWidth="101.0" text="Father Name">
                 <cellValueFactory>
                     <PropertyValueFactory property="faName" />
@@ -39,7 +38,6 @@
                     <TextFieldTableCell fx:factory="forTableColumn" />
                 </cellFactory>
             </TableColumn>
-            <!--<TableColumn fx:id="moName" prefWidth="101.0" text="Mother Name" />-->
             <TableColumn editable="true" fx:id="moName" prefWidth="101.0" text="Mother Name" >
                 <cellValueFactory>
                     <PropertyValueFactory property="moName" />
@@ -48,7 +46,6 @@
                     <TextFieldTableCell fx:factory="forTableColumn" />
                 </cellFactory>
             </TableColumn>
-            <!--<TableColumn fx:id="gender" prefWidth="101.0" text="Gender" />-->
             <TableColumn editable="true" fx:id="gender" prefWidth="101.0" text="Gender" >
                 <cellValueFactory>
                     <PropertyValueFactory property="gender" />
@@ -57,7 +54,6 @@
                     <TextFieldTableCell fx:factory="forTableColumn" />
                 </cellFactory>
             </TableColumn>
-            <!--<TableColumn fx:id="cls" prefWidth="101.0" text="Class" />-->
             <TableColumn editable="true" fx:id="cls" prefWidth="101.0" text="Class">
                 <cellValueFactory>
                     <PropertyValueFactory property="cls" />
@@ -66,7 +62,6 @@
                     <TextFieldTableCell fx:factory="forTableColumn" />
                 </cellFactory>
             </TableColumn>
-            <!--<TableColumn fx:id="dob" prefWidth="107.0" text="Date Of Birth" />-->
             <TableColumn editable="true" fx:id="dob" prefWidth="107.0" text="Date Of Birth">
                 <cellValueFactory>
                     <PropertyValueFactory property="dob" />
@@ -76,15 +71,6 @@
                 </cellFactory>
             </TableColumn>
             <TableColumn fx:id="doj" prefWidth="102.0" text="Date Of Join" />
-<!--            <TableColumn editable="true" ffx:id="doj" prefWidth="102.0" text="Date Of Join">
-                <cellValueFactory>
-                    <PropertyValueFactory property="doj" />
-                </cellValueFactory>
-                <cellFactory>
-                    <TextFieldTableCell fx:factory="forTableColumn" />
-                </cellFactory>
-            </TableColumn>-->
-            <!--<TableColumn fx:id="phone" prefWidth="126.0" text="Phone Number" />-->
             <TableColumn editable="true" fx:id="phone" prefWidth="126.0" text="Phone Number">
                 <cellValueFactory>
                     <PropertyValueFactory property="phone" />
@@ -94,17 +80,23 @@
                 </cellFactory>
             </TableColumn>
             <TableColumn fx:id="age" prefWidth="83.0" text="Age" />
-<!--            <TableColumn editable="true" fx:id="age" prefWidth="83.0" text="Age">
-                <cellValueFactory>
-                    <PropertyValueFactory property="age" />
-                </cellValueFactory>
-                <cellFactory>
-                    <TextFieldTableCell fx:factory="forTableColumn" />
-                </cellFactory>
-            </TableColumn>-->
-            <TableColumn fx:id="action" prefWidth="150.0" text="Action" />
+           <TableColumn fx:id="action" prefWidth="260.0" text="Action" />
         </columns>
       </TableView>
-      
+      <TextField id="fNameField" fx:id="fNameField" layoutX="29.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="First Name" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <TextField id="lNameField" fx:id="lNameField" layoutX="219.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="Last Name" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <TextField id="faNameField" fx:id="faNameField" layoutX="409.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="Father Name" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <TextField id="moNameField" fx:id="moNameField" layoutX="599.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="Mother Name" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <TextField id="genderField" fx:id="genderField" layoutX="789.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="Gender" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <DatePicker fx:id="dobPicker" layoutX="29.0" layoutY="751.0" prefHeight="33.0" prefWidth="173.0" promptText="Date Of Birth" />
+      <DatePicker fx:id="dojPicker" layoutX="219.0" layoutY="751.0" prefHeight="33.0" prefWidth="173.0" promptText="Date Of Join" />
+      <TextField id="clsField" fx:id="clsField" layoutX="977.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="Class" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <TextField id="ageField" fx:id="ageField" layoutX="409.0" layoutY="751.0" prefHeight="31.0" prefWidth="173.0" promptText="Age" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <TextField id="phoneField" fx:id="phoneField" layoutX="599.0" layoutY="751.0" prefHeight="31.0" prefWidth="173.0" promptText="Phone" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <Label fx:id="errorLabel" id="errorLabel" visible="false" layoutX="814.0" layoutY="751.0" prefHeight="33.0" prefWidth="173.0" style="-fx-text-fill: red; -fx-font-size: 18;" text="There was an error !" />
+      <Button layoutX="1102.0" onAction="#addStudentToDb" layoutY="752.0" mnemonicParsing="false" text="Add" />
+   
+          
+      </AnchorPane>
    </children>
 </AnchorPane>

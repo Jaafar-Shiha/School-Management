@@ -23,6 +23,9 @@ import main.controller.MainController;
  **/
 
 public class DashboardMgmtController implements Initializable {
+    
+    public DashboardMgmtController(){
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -38,14 +41,40 @@ public class DashboardMgmtController implements Initializable {
     private AnchorPane root;
    
    @FXML
-    private Text title;
+    public Text title;
 
 
     @FXML
     void openStudentMgmtPage() {
          try {
-             title.setText("Students");
+            title.setText("Students");
             AnchorPane studentMgmt = FXMLLoader.load(getClass().getClassLoader().getResource("main/view/Students.fxml"));
+            children.getChildren().setAll(studentMgmt);
+        }catch(IOException e){
+            System.out.println( e);
+        }
+        
+    }
+    
+    
+    @FXML
+    void openTeacherMgmtPage() {
+         try {
+             title.setText("Teachers");
+            AnchorPane studentMgmt = FXMLLoader.load(getClass().getClassLoader().getResource("main/view/Teachers.fxml"));
+            children.getChildren().setAll(studentMgmt);
+        }catch(IOException e){
+            System.out.println( e);
+        }
+        
+    }
+    
+    
+    @FXML
+    void openMarksMgmtPage() {
+        try {
+             title.setText("Marks");
+            AnchorPane studentMgmt = FXMLLoader.load(getClass().getClassLoader().getResource("main/view/Teachers.fxml"));
             children.getChildren().setAll(studentMgmt);
         }catch(IOException e){
             System.out.println( e);

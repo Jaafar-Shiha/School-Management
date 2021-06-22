@@ -2,6 +2,10 @@ package main.model;
 
 import java.sql.Date;
 
+/**
+ *
+ * @author zaid
+ */
 public abstract class Person 
 {
     private int id;
@@ -22,7 +26,17 @@ public abstract class Person
                     String phone,
                     byte age )
     {
+        this(firstName, lastName, gender, dateOfJoin, phone, age);
         this.id = id;
+    }
+    
+    public Person( String firstName,
+                   String lastName,
+                   String gender,
+                   Date dateOfJoin,
+                   String phone,
+                   byte age )
+    {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;

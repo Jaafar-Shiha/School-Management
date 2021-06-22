@@ -3,6 +3,10 @@ package main.controller;
 import java.util.List;
 import main.dao.IDAO;
 
+/**
+ *
+ * @author zaid
+ */
 public abstract class AbstractController 
 {
     private IDAO dao;

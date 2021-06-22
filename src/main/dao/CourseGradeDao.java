@@ -1,82 +1,124 @@
 package main.dao;
 
 import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import javafx.collections.ObservableList;
 import main.db.BasicDB;
 import main.model.Course;
 import main.model.CourseGrade;
+import main.model.Student;
 
+/**
+ *
+ * @author zaid
+ */
 public class CourseGradeDao implements IDAO
 {
-    private ObservableList<Course> courses;
+    private List<CourseGrade> coursesGrades;
     
     public CourseGradeDao() {}
     
-    public CourseGradeDao( ObservableList<Course> courses ) 
+    public CourseGradeDao( List<CourseGrade> coursesGrades ) 
     {
-        this.courses = courses;
+        this.coursesGrades = coursesGrades;
     }
     
-    public ObservableList<Course> getCourses() { return this.courses; }
+    public List<CourseGrade> getCourses() { return this.coursesGrades; }
     
-    public void setCourses( ObservableList<Course> courses ) { this.courses = courses; }
+    public void setCourses( List<CourseGrade> coursesGrades ) { this.coursesGrades = coursesGrades; }
     
     
     
     @Override
     public List retrieveAll()
     {
-        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
     public Object retrieveOne( int id )
     {
-        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
     public List retrieve( Object model )
     {
-        return null;
-    }
-    
-    @Override
-    public void add( Object model )
-    {
-        CourseGrade courseGrade = (CourseGrade) model;
+        String query = "{call getMarksOfStudent( ? ) }";
         
-        
-        String query = "{call addGradeToStudent(?, ?, ?, ?) }";
+        Student student = (Student) model;
         
         try
         {
             CallableStatement callableStatement = BasicDB.getConnection()
-                                                     .prepareCall( query );
-        
-            callableStatement.setInt( 1 , courseGrade.getStudent().getId() );
-            callableStatement.setInt( 2 , courseGrade.getCourse().getId() );
-            callableStatement.setByte( 3 , courseGrade.getMidterm() );
-            callableStatement.setByte( 4 , courseGrade.getExam() );
+                                                         .prepareCall( query );
 
-            BasicDB.callVoid(callableStatement);
+            callableStatement.setInt( 1 , student.getId() );
+            
+            ResultSet resultSet = BasicDB.call( callableStatement );
+
+            this.coursesGrades.clear();
+
+            while( resultSet.next() )
+            {
+//                int id = resultSet.getInt(1);
+                int studentId = resultSet.getInt(1);
+                int courseId = resultSet.getInt(2);
+                byte midterm = resultSet.getByte(3);
+                byte exam = resultSet.getByte(4);
+                byte finalGrade = resultSet.getByte(5);
+                
+                Student resultStudent = new Student();
+                resultStudent.setId( studentId );
+                
+                Course resultCourse = new Course();
+                resultCourse.setId( courseId );
+
+                CourseGrade resultCourseGrade = new CourseGrade( 0,resultStudent, //id, 
+                                                     resultCourse, midterm, 
+                                                     exam, finalGrade );
+
+                this.coursesGrades.add( resultCourseGrade );
+            }
+            
+            return this.coursesGrades;
         }
         catch( SQLException sqle )
         {
             sqle.printStackTrace();
         }
         
+        return null;
+    }
+    
+    @Override
+    public void add( Object model )
+    {
+//        CourseGrade courseGrade = (CourseGrade) model;
+//        
+//        
+//        String query = "{call addGradeToStudent(?, ?, ?, ?) }";
+//        
+//        try
+//        {
+//            CallableStatement callableStatement = BasicDB.getConnection()
+//                                                     .prepareCall( query );
+//        
+//            callableStatement.setInt( 1 , courseGrade.getStudent().getId() );
+//            callableStatement.setInt( 2 , courseGrade.getCourse().getId() );
+//            callableStatement.setByte( 3 , courseGrade.getMidterm() );
+//            callableStatement.setByte( 4 , courseGrade.getExam() );
+//
+//            BasicDB.callVoid(callableStatement);
+//        }
+//        catch( SQLException sqle )
+//        {
+//            sqle.printStackTrace();
+//        }
         
-//        String query = "{call addGradeToStudent(" + 
-//                courseGrade.getStudent().getId() + 
-//                courseGrade.getCourse().getId() +
-//                courseGrade.getMidterm() +
-//                courseGrade.getExam() +
-//                ") }";
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         
-//        BasicDB.callVoid( query );
     }
     
     @Override
@@ -84,18 +126,23 @@ public class CourseGradeDao implements IDAO
     {
         CourseGrade courseGrade = (CourseGrade) model;
         
-        String query = "{call updateGradeOfStudent(?, ?, ?, ?, ?) }";
+        String query = "{call updateMarkToStudent(?, ?, ?, ?, ?) }";
         
         try
         {
             CallableStatement callableStatement = BasicDB.getConnection()
                                                      .prepareCall( query );
         
-            callableStatement.setInt( 1 , courseGrade.getId() );
-            callableStatement.setInt( 2 , courseGrade.getStudent().getId() );
-            callableStatement.setInt( 3 , courseGrade.getCourse().getId() );
-            callableStatement.setByte( 4 , courseGrade.getMidterm() );
-            callableStatement.setByte( 5 , courseGrade.getExam() );
+//            callableStatement.setInt( 1 , courseGrade.getId() );
+//            callableStatement.setInt( 2 , courseGrade.getStudent().getId() );
+//            callableStatement.setInt( 3 , courseGrade.getCourse().getId() );
+//            callableStatement.setByte( 4 , courseGrade.getMidterm() );
+//            callableStatement.setByte( 5 , courseGrade.getExam() );
+            callableStatement.setInt( 1 , courseGrade.getStudent().getId() );
+            callableStatement.setInt( 2 , courseGrade.getCourse().getId() );
+            callableStatement.setByte( 3 , courseGrade.getMidterm() );
+            callableStatement.setByte( 4 , courseGrade.getExam() );
+            callableStatement.setByte( 5 , courseGrade.getFinalGrade() );
 
             BasicDB.callVoid(callableStatement);
         }
@@ -104,25 +151,11 @@ public class CourseGradeDao implements IDAO
             sqle.printStackTrace();
         }
         
-//        String query = "{call updateGradeOfStudent(" + 
-//                courseGrade.getId() + 
-//                courseGrade.getStudent().getId() + 
-//                courseGrade.getCourse().getId() +
-//                courseGrade.getMidterm() +
-//                courseGrade.getExam() +
-//                ") }";
-//        
-//        BasicDB.callVoid( query );
     }
     
     @Override
     public void delete( Object model )
     {
-        CourseGrade courseGrade = (CourseGrade) model;
-        
-        courseGrade.setMidterm( (byte) 0);
-        courseGrade.setExam( (byte) 0);
-        
-        this.update(courseGrade);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

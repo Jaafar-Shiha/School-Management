@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="829.0" prefWidth="1384.0" stylesheets="@css/students.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.controller.TeacherMgmtController">
+   <children>
+      <TableView fx:id="teachersTable" editable="true" layoutX="29.0" layoutY="203.0" prefHeight="477.0" prefWidth="1232.0">
+        <columns>
+            <TableColumn fx:id="tchID" prefWidth="75.0" text="Teacher ID" />
+            <TableColumn editable="true" fx:id="fName" prefWidth="97.0" text="Teacher Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="fName" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <TableColumn editable="true" fx:id="lName" prefWidth="85.0" text="Last Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="lName" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <TableColumn editable="true" fx:id="gender" prefWidth="101.0" text="Gender" >
+                <cellValueFactory>
+                    <PropertyValueFactory property="gender" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            
+            <TableColumn fx:id="doj" prefWidth="102.0" text="Date Of Join" />
+            <TableColumn editable="true" fx:id="phone" prefWidth="126.0" text="Phone Number">
+                <cellValueFactory>
+                    <PropertyValueFactory property="phone" />
+                </cellValueFactory>
+                <cellFactory>
+                    <TextFieldTableCell fx:factory="forTableColumn" />
+                </cellFactory>
+            </TableColumn>
+            <TableColumn fx:id="age" prefWidth="83.0" text="Age" />
+            <TableColumn fx:id="email" prefWidth="83.0" text="Email" />
+            <TableColumn fx:id="action" prefWidth="150.0" text="Action" />
+        </columns>
+      </TableView>
+      <TextField id="fNameField" fx:id="fNameField" layoutX="29.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="First Name" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <TextField id="lNameField" fx:id="lNameField" layoutX="219.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="Last Name" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <TextField id="genderField" fx:id="genderField" layoutX="409.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="Gender" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <DatePicker fx:id="dojPicker" layoutX="502.0" layoutY="751.0" prefHeight="33.0" prefWidth="173.0" promptText="Date Of Join" />
+      <TextField id="ageField" fx:id="ageField" layoutX="599.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="Age" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <Button layoutX="1016.0" onAction="#addTeacherToDb" layoutY="752.0" mnemonicParsing="false" text="Add" />
+      <TextField id="phoneField" fx:id="phoneField" layoutX="789.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="Phone" style="-fx-border-color: black; -fx-border-width: 1px;" />
+      <Label id="errorLabel" fx:id="errorLabel" visible="false" layoutX="755.0" layoutY="751.0" prefHeight="33.0" prefWidth="173.0" style="-fx-text-fill: red; -fx-font-size: 18;" text="There was an error !" />
+      <TextField id="emailField" fx:id="emailField" layoutX="977.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="Email" style="-fx-border-color: black; -fx-border-width: 1px;" />
+   
+   </children>
+</AnchorPane>

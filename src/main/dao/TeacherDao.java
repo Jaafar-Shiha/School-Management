@@ -9,6 +9,10 @@ import javafx.collections.ObservableList;
 import main.db.BasicDB;
 import main.model.Teacher;
 
+/**
+ *
+ * @author zaid
+ */
 public class TeacherDao implements IDAO
 {
     private ObservableList<Teacher> teachers;
@@ -33,13 +37,12 @@ public class TeacherDao implements IDAO
         
         try
         {
-//        ResultSet resultSet = BasicDB.call(query);
             CallableStatement callableStatement = BasicDB.getConnection()
                                                          .prepareCall( query );
 
             ResultSet resultSet = BasicDB.call( callableStatement );
         
-        this.teachers.clear();
+            this.teachers.clear();
         
             while( resultSet.next() )
             {
@@ -73,12 +76,10 @@ public class TeacherDao implements IDAO
     @Override
     public Object retrieveOne( int id )
     {
-//        String query = "{call getTeacher(" + id + ") }";
         String query = "{call getTeacher(?) }";
         
         try
         {
-//        ResultSet resultSet = BasicDB.call(query);
             CallableStatement callableStatement = BasicDB.getConnection()
                                                          .prepareCall( query );
             
@@ -117,29 +118,17 @@ public class TeacherDao implements IDAO
     @Override
     public List retrieve( Object model )
     {
-        Teacher teacher = (Teacher) model;
-        
-        this.teachers.clear();
-        
-        return null;
+//        Teacher teacher = (Teacher) model;
+//        this.teachers.clear();
+//        
+//        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
     public void add( Object model )
     {
         Teacher teacher = (Teacher) model;
-        
-//        String query = "{call addTeacherToSchool(" + 
-//                teacher.getFirstName() + 
-//                teacher.getLastName() + 
-//                teacher.getGender() +
-//                teacher.getDateOfJoin() +
-//                teacher.getPhone() +
-//                teacher.getAge() +
-//                teacher.getEmail() +
-//                ") }";
-//        
-//        BasicDB.callVoid(query);
         
         String query = "{call addTeacherToSchool(?, ?, ?, ?, ?, ?, ?) }";
         
@@ -168,19 +157,6 @@ public class TeacherDao implements IDAO
     public void update( Object model )
     {
         Teacher teacher = (Teacher) model;
-        
-//        String query = "{call updateTeacherInSchool(" + 
-//                teacher.getId()+ 
-//                teacher.getFirstName() + 
-//                teacher.getLastName() + 
-//                teacher.getGender() +
-//                teacher.getDateOfJoin() +
-//                teacher.getPhone() +
-//                teacher.getAge() +
-//                teacher.getEmail() +
-//                ") }";
-//        
-//        BasicDB.callVoid(query);
         
         String query = "{call updateTeacherInSchool(?, ?, ?, ?, ?, ?, ?, ?) }";
         
@@ -228,6 +204,5 @@ public class TeacherDao implements IDAO
             sqle.printStackTrace();
         }
         
-//        BasicDB.callVoid(query);
     }
 }

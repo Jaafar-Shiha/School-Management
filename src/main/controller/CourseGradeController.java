@@ -4,6 +4,10 @@ import java.util.List;
 import main.dao.CourseGradeDao;
 import main.model.CourseGrade;
 
+/**
+ *
+ * @author zaid
+ */
 public class CourseGradeController extends AbstractController
 {
     public CourseGradeController( CourseGradeDao courseDao )
