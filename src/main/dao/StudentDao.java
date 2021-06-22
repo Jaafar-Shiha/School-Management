@@ -154,8 +154,8 @@ public class StudentDao implements IDAO
             callableStatement.setString( 4 , student.getMotherName() );
             callableStatement.setString( 5 , student.getGender() );
             
-//            callableStatement.setInt( 6 , student.getClassId() );
-            callableStatement.setInt( 6 , student.getSchoolClass().getId() );
+            callableStatement.setInt( 6 , student.getClassId() );
+//            callableStatement.setInt( 6 , student.getSchoolClass().getId() );
             
             callableStatement.setDate( 7 , student.getDateOfBirth() );
             callableStatement.setDate( 8 , student.getDateOfJoin() );
@@ -191,8 +191,8 @@ public class StudentDao implements IDAO
             callableStatement.setString( 5 , student.getMotherName() );
             callableStatement.setString( 6 , student.getGender() );
             
-//            callableStatement.setInt( 7 , student.getClassId() );
-            callableStatement.setInt( 7 , student.getSchoolClass().getId() );
+            callableStatement.setInt( 7 , student.getClassId() );
+//            callableStatement.setInt( 7 , student.getSchoolClass().getId() );
             
             callableStatement.setDate(8 , student.getDateOfBirth() );
             callableStatement.setDate( 9 , student.getDateOfJoin() );
