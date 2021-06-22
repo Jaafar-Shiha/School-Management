@@ -35,10 +35,6 @@ import main.dao.TeacherDao;
 import main.model.Student;
 import main.model.Teacher;
 
-
-
-
-
 /**
  *
  * @author Jaafar
@@ -334,6 +330,15 @@ TeacherController teacherController = new TeacherController(teacherDao);
                     tchGender,
                     dojSqlDate, phoneField.getText(), tchAge, emailField.getText());
             teacherController.addButtonHandler(newtch);
+            
+            fNameField.setText("");
+            lNameField.setText("");
+            genderField.setText("");
+            dojPicker.setValue(null);
+            phoneField.setText("");
+            ageField.setText("");
+            emailField.setText("");
+            
             teacherController.retrieveAll();
         } catch (Exception e) {
             System.out.println( e + "dvsb ");

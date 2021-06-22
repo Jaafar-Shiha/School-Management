@@ -28,8 +28,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
+import main.controller.ClassController;
 import main.controller.StudentController;
+import main.dao.ClassDao;
 import main.dao.StudentDao;
+import main.model.SchoolClass;
 import main.model.Student;
 
 /**
@@ -127,6 +130,10 @@ public class StudentsMgmtController implements Initializable {
     ObservableList<Student> students = FXCollections.observableArrayList();
     StudentDao studentDao = new StudentDao(students);
     StudentController studentController = new StudentController(studentDao);
+
+    ObservableList<main.model.SchoolClass> classes = FXCollections.observableArrayList();
+    ClassDao classDao = new ClassDao(classes);
+    ClassController classController = new ClassController(classDao);
 
 
     /**
@@ -462,6 +469,9 @@ public class StudentsMgmtController implements Initializable {
     @FXML
     public void addStudentToDb(ActionEvent event){
         try {
+            
+            classController.retrieveAll();
+            
             LocalDate dobLocalDate = dobPicker.getValue();
             Instant dobInstant = Instant.from(dobLocalDate.atStartOfDay(ZoneId.systemDefault()));
             Date dobDate = Date.from(dobInstant);
@@ -476,6 +486,19 @@ public class StudentsMgmtController implements Initializable {
             
             int stdClass = Integer.parseInt(clsField.getText());
             
+            boolean isValidClass = false;
+            for(int i=0;i<classes.size();i++){
+                if (stdClass == classes.get(i).getId()){
+                    isValidClass = true;
+                    break;
+                }
+            }
+            
+            if (!isValidClass) {
+                errorLabel.setVisible(true);
+                return ;
+            }
+            
             String stdGender = genderField.getText();
             if (!stdGender.equals("Male") && !stdGender.equals("Female")){
                 errorLabel.setVisible(true);
@@ -489,6 +512,18 @@ public class StudentsMgmtController implements Initializable {
                     stdClass, dobSqlDate,
                     dojSqlDate, phoneField.getText(), stdAge);
             studentController.addButtonHandler(newStd);
+            
+            fNameField.setText("");
+            lNameField.setText("");
+            faNameField.setText("");
+            moNameField.setText("");
+            genderField.setText("");
+            clsField.setText("");
+            dobPicker.setValue(null);
+            dojPicker.setValue(null);
+            phoneField.setText("");
+            ageField.setText("");
+            
             studentController.retrieveAll();
         } catch (Exception e) {
             System.out.println(e);

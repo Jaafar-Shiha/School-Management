@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import main.controller.AbstractController;
 import main.dao.IDAO;
+import main.model.CourseGrade;
 import main.model.Student;
 
 /**
@@ -54,11 +55,17 @@ public class ActionCell<T> implements  Callback<TableColumn<T, T>, TableCell<T, 
         }
         HBox pane ;
         try {
+            CourseGrade object = (CourseGrade) getTableView().getItems().get(0);
+            pane = new HBox(10,updateButton);
+        } catch (Exception e) {
+            try {
             Student object = (Student) getTableView().getItems().get(0);
             pane = new HBox(10,updateButton, deleteButton, showMarksButton);
-        } catch (Exception e) {
+        } catch (Exception ee) {
             pane = new HBox(10,updateButton, deleteButton);
         }
+        }
+        
         
         
         setGraphic(pane);
@@ -71,7 +78,6 @@ public class ActionCell<T> implements  Callback<TableColumn<T, T>, TableCell<T, 
 
         updateButton.setOnAction(event -> {
             T object = getTableView().getItems().get(getIndex());
-            System.out.println("afe" +((Student) object));
             controller.updateButtonHandler(object);
         });
         

@@ -75,7 +75,7 @@ public class CourseGradeDao implements IDAO
                 Course resultCourse = new Course();
                 resultCourse.setId( courseId );
 
-                CourseGrade resultCourseGrade = new CourseGrade( 0,resultStudent, //id, 
+                CourseGrade resultCourseGrade = new CourseGrade( resultStudent, 
                                                      resultCourse, midterm, 
                                                      exam, finalGrade );
 

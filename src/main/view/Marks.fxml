@@ -8,7 +8,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.cell.*?>
 
-<AnchorPane id="root" fx:controller="main.view.controller.MarksMgmtController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane id="root" fx:controller="main.view.controller.MarksMgmtController" maxHeight="-Infinity" maxWidth="-Infinity" stylesheets="@css/students.css" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <AnchorPane prefHeight="140.0" prefWidth="974.0" styleClass="linear-grad-to-right" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -18,11 +18,14 @@
                </font>
             </Text>
          </children></AnchorPane>
-      <TableView fx:id="marksTable" editable="true" layoutX="179.0" layoutY="153.0" prefHeight="477.0" prefWidth="465.0">
+      <TableView fx:id="marksTable" editable="true" layoutX="179.0" layoutY="153.0" prefHeight="477.0" prefWidth="430.0">
         <columns>
-          <TableColumn fx:id="courseId" prefWidth="75.0" text="Course ID" />
-          <TableColumn fx:id="midterm" prefWidth="83.0" text="Mid term" />
-            <TableColumn editable="true" fx:id="exam" prefWidth="85.0"  text="Exam">
+          <TableColumn fx:id="courseId" editable="false" prefWidth="75.0" text="Course ID" />
+          <TableColumn fx:id="midterm" editable="true"  prefWidth="83.0" text="Mid term" />
+            <TableColumn fx:id="exam" editable="true" prefWidth="83.0" text="Exam" />
+            <TableColumn fx:id="finalGrade" editable="true" prefWidth="83.0" text="Final Grade" />
+            <TableColumn fx:id="action" prefWidth="106.0" text="Action" />
+<!--            <TableColumn editable="true" fx:id="exam" prefWidth="85.0"  text="Exam">
                 <cellValueFactory>
                     <PropertyValueFactory property="exam" />
                 </cellValueFactory>
@@ -39,7 +42,7 @@
                 </cellFactory>
             </TableColumn>
             
-            <TableColumn prefWidth="106.0" text="Action" />
+            <TableColumn prefWidth="106.0" text="Action" />-->
         </columns>
       </TableView>
 
