@@ -118,11 +118,11 @@ public class TeacherDao implements IDAO
     @Override
     public List retrieve( Object model )
     {
-        Teacher teacher = (Teacher) model;
-        
-        this.teachers.clear();
-        
-        return null;
+//        Teacher teacher = (Teacher) model;
+//        this.teachers.clear();
+//        
+//        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override

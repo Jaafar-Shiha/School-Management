@@ -129,10 +129,11 @@ public class StudentDao implements IDAO
     @Override
     public List retrieve( Object model )
     {
-        Student student = (Student) model;
-        this.students.clear();
-        
-        return null;
+//        Student student = (Student) model;
+//        this.students.clear();
+//        
+//        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
