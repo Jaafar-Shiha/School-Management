@@ -6,7 +6,6 @@ package main.model;
  */
 public class CourseGrade 
 {
-//    private int id;
     private Student student;
     private Course course;
     private byte midterm;
@@ -15,14 +14,13 @@ public class CourseGrade
     
     public CourseGrade() { }
     
-    public CourseGrade( //int id,
+    public CourseGrade( 
                         Student student, 
                         Course course, 
                         byte midterm, 
                         byte exam, 
                         byte finalGrade )
     {
-//        this.id = id;
         this.student = student;
         this.course = course;
         this.midterm = midterm;
@@ -32,17 +30,6 @@ public class CourseGrade
     
     
    
-    
-//    
-//    public CourseGrade( Student student, 
-//                        Course course, 
-//                        byte midterm, 
-//                        byte exam, 
-//                        byte finalGrade )
-//    {
-//        this(0, student, course, midterm, exam, finalGrade);//
-//    }
-//    
     public CourseGrade( CourseGrade courseGrade )
     {
         this( courseGrade.getStudent(), 
@@ -51,10 +38,7 @@ public class CourseGrade
               courseGrade.getExam(), 
               courseGrade.getFinalGrade() );
     }
-
-//    public int getId() { return this.id; }
-//    public void setId( int id ) { this.id = id; }
-    
+   
     public Student getStudent() { return this.student; }
     public void setStudent(Student student) { this.student = student; }
 

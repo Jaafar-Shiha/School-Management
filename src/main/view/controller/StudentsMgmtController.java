@@ -32,7 +32,6 @@ import main.controller.ClassController;
 import main.controller.StudentController;
 import main.dao.ClassDao;
 import main.dao.StudentDao;
-import main.model.SchoolClass;
 import main.model.Student;
 
 /**
@@ -163,7 +162,7 @@ public class StudentsMgmtController implements Initializable {
                
                 @Override
                 public String toString(String object) {
-                    return object.toString();
+                    return object;
                 }
 
                 @Override
@@ -277,7 +276,7 @@ public class StudentsMgmtController implements Initializable {
                
                 @Override
                 public String toString(String object) {
-                    return object.toString();
+                    return object;
                 }
 
                 @Override
@@ -305,7 +304,7 @@ public class StudentsMgmtController implements Initializable {
                
                 @Override
                 public String toString(String object) {
-                    return object.toString();
+                    return object;
                 }
 
                 @Override
@@ -326,7 +325,7 @@ public class StudentsMgmtController implements Initializable {
                
                 @Override
                 public String toString(String object) {
-                    return object.toString();
+                    return object;
                 }
 
                 @Override
@@ -347,7 +346,7 @@ public class StudentsMgmtController implements Initializable {
                
                 @Override
                 public String toString(String object) {
-                    return object.toString();
+                    return object;
                 }
 
                 @Override
@@ -369,7 +368,7 @@ public class StudentsMgmtController implements Initializable {
                
                 @Override
                 public String toString(String object) {
-                    return object.toString();
+                    return object;
                 }
 
                 @Override

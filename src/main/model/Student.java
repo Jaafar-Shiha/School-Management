@@ -12,7 +12,6 @@ public class Student extends Person
     private String motherName;
     
     private int classId;
-//    private SchoolClass schoolClass;
     
     private Date dateOfBirth;
     
@@ -42,8 +41,6 @@ public class Student extends Person
         this.motherName = motherName;
         
         this.classId = classId;
-//        this.schoolClass = new SchoolClass();
-//        this.schoolClass.setId(classId);
         
         this.dateOfBirth = dateOfBirth;
     }
@@ -81,7 +78,6 @@ public class Student extends Person
               student.getGender(),
               
               student.getClassId(),
-//              student.getSchoolClass().getId(),
               
               student.getDateOfBirth(),
               student.getDateOfJoin(),
@@ -99,8 +95,6 @@ public class Student extends Person
 
     public int getClassId() { return this.classId; }
     public void setClassId(int classId) { this.classId = classId; }
-//    public SchoolClass getSchoolClass() { return this.schoolClass; }
-//    public void setSchoolClass( SchoolClass schoolClass ) { this.schoolClass = schoolClass; }
 
     public Date getDateOfBirth() { return this.dateOfBirth; }
     public void setDateOfBirth(Date dateOfBirth) { this.dateOfBirth = dateOfBirth; }

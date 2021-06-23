@@ -30,9 +30,6 @@ public class DashboardMgmtController implements Initializable {
     private AnchorPane children;
    
    @FXML
-    private AnchorPane root;
-   
-   @FXML
     public Text title;
 
    @FXML

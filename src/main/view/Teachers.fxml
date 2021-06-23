@@ -60,6 +60,5 @@
       <TextField id="phoneField" fx:id="phoneField" layoutX="789.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="Phone" style="-fx-border-color: black; -fx-border-width: 1px;" />
       <Label id="errorLabel" fx:id="errorLabel" visible="false" layoutX="755.0" layoutY="751.0" prefHeight="33.0" prefWidth="173.0" style="-fx-text-fill: red; -fx-font-size: 18;" text="There was an error !" />
       <TextField id="emailField" fx:id="emailField" layoutX="977.0" layoutY="694.0" prefHeight="31.0" prefWidth="173.0" promptText="Email" style="-fx-border-color: black; -fx-border-width: 1px;" />
-   
    </children>
 </AnchorPane>

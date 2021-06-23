@@ -62,7 +62,6 @@ public class CourseGradeDao implements IDAO
 
             while( resultSet.next() )
             {
-//                int id = resultSet.getInt(1);
                 int studentId = resultSet.getInt(1);
                 int courseId = resultSet.getInt(2);
                 byte midterm = resultSet.getByte(3);
@@ -95,27 +94,6 @@ public class CourseGradeDao implements IDAO
     @Override
     public void add( Object model )
     {
-//        CourseGrade courseGrade = (CourseGrade) model;
-//        
-//        
-//        String query = "{call addGradeToStudent(?, ?, ?, ?) }";
-//        
-//        try
-//        {
-//            CallableStatement callableStatement = BasicDB.getConnection()
-//                                                     .prepareCall( query );
-//        
-//            callableStatement.setInt( 1 , courseGrade.getStudent().getId() );
-//            callableStatement.setInt( 2 , courseGrade.getCourse().getId() );
-//            callableStatement.setByte( 3 , courseGrade.getMidterm() );
-//            callableStatement.setByte( 4 , courseGrade.getExam() );
-//
-//            BasicDB.callVoid(callableStatement);
-//        }
-//        catch( SQLException sqle )
-//        {
-//            sqle.printStackTrace();
-//        }
         
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         
@@ -133,11 +111,6 @@ public class CourseGradeDao implements IDAO
             CallableStatement callableStatement = BasicDB.getConnection()
                                                      .prepareCall( query );
         
-//            callableStatement.setInt( 1 , courseGrade.getId() );
-//            callableStatement.setInt( 2 , courseGrade.getStudent().getId() );
-//            callableStatement.setInt( 3 , courseGrade.getCourse().getId() );
-//            callableStatement.setByte( 4 , courseGrade.getMidterm() );
-//            callableStatement.setByte( 5 , courseGrade.getExam() );
             callableStatement.setInt( 1 , courseGrade.getStudent().getId() );
             callableStatement.setInt( 2 , courseGrade.getCourse().getId() );
             callableStatement.setByte( 3 , courseGrade.getMidterm() );

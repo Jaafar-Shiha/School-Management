@@ -20,29 +20,11 @@
          </children></AnchorPane>
       <TableView fx:id="marksTable" editable="true" layoutX="179.0" layoutY="153.0" prefHeight="477.0" prefWidth="430.0">
         <columns>
-          <TableColumn fx:id="courseId" editable="false" prefWidth="75.0" text="Course ID" />
-          <TableColumn fx:id="midterm" editable="true"  prefWidth="83.0" text="Mid term" />
+            <TableColumn fx:id="courseId" editable="false" prefWidth="75.0" text="Course ID" />
+            <TableColumn fx:id="midterm" editable="true"  prefWidth="83.0" text="Mid term" />
             <TableColumn fx:id="exam" editable="true" prefWidth="83.0" text="Exam" />
             <TableColumn fx:id="finalGrade" editable="true" prefWidth="83.0" text="Final Grade" />
             <TableColumn fx:id="action" prefWidth="106.0" text="Action" />
-<!--            <TableColumn editable="true" fx:id="exam" prefWidth="85.0"  text="Exam">
-                <cellValueFactory>
-                    <PropertyValueFactory property="exam" />
-                </cellValueFactory>
-                <cellFactory>
-                    <TextFieldTableCell fx:factory="forTableColumn" />
-                </cellFactory>
-            </TableColumn>
-            <TableColumn editable="true" fx:id="finalGrade" prefWidth="85.0"  text="Final Grade">
-                <cellValueFactory>
-                    <PropertyValueFactory property="finalGrade" />
-                </cellValueFactory>
-                <cellFactory>
-                    <TextFieldTableCell fx:factory="forTableColumn" />
-                </cellFactory>
-            </TableColumn>
-            
-            <TableColumn prefWidth="106.0" text="Action" />-->
         </columns>
       </TableView>
 

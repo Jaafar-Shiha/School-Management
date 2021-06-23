@@ -7,24 +7,19 @@ package main.view.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
-import javafx.util.converter.IntegerStringConverter;
 import main.controller.CourseGradeController;
 import main.dao.CourseGradeDao;
 import main.model.Course;
 import main.model.CourseGrade;
-import main.model.SchoolClass;
 import main.model.Student;
 
 /**
@@ -176,7 +171,6 @@ public class MarksMgmtController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        System.out.println("sgr" + this.st.getFatherName());
        
     }
     

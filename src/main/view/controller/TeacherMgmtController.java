@@ -28,11 +28,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
-import main.controller.StudentController;
 import main.controller.TeacherController;
-import main.dao.StudentDao;
 import main.dao.TeacherDao;
-import main.model.Student;
 import main.model.Teacher;
 
 /**
@@ -112,7 +109,6 @@ private Label errorLabel;
 
 
 ObservableList<Teacher> teachers = FXCollections.observableArrayList();
-//    List<Student> students ;
 TeacherDao teacherDao = new TeacherDao(teachers);
 TeacherController teacherController = new TeacherController(teacherDao);
 
@@ -134,7 +130,7 @@ TeacherController teacherController = new TeacherController(teacherDao);
                
                 @Override
                 public String toString(String object) {
-                    return object.toString();
+                    return object;
                 }
 
                 @Override
@@ -187,7 +183,7 @@ TeacherController teacherController = new TeacherController(teacherDao);
                
                 @Override
                 public String toString(String object) {
-                    return object.toString();
+                    return object;
                 }
 
                 @Override
@@ -215,7 +211,7 @@ TeacherController teacherController = new TeacherController(teacherDao);
                
                 @Override
                 public String toString(String object) {
-                    return object.toString();
+                    return object;
                 }
 
                 @Override
@@ -237,7 +233,7 @@ TeacherController teacherController = new TeacherController(teacherDao);
                
                 @Override
                 public String toString(String object) {
-                    return object.toString();
+                    return object;
                 }
 
                 @Override

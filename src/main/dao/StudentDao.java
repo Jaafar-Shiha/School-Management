@@ -129,10 +129,7 @@ public class StudentDao implements IDAO
     @Override
     public List retrieve( Object model )
     {
-//        Student student = (Student) model;
-//        this.students.clear();
-//        
-//        return null;
+
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -155,7 +152,6 @@ public class StudentDao implements IDAO
             callableStatement.setString( 5 , student.getGender() );
             
             callableStatement.setInt( 6 , student.getClassId() );
-//            callableStatement.setInt( 6 , student.getSchoolClass().getId() );
             
             callableStatement.setDate( 7 , student.getDateOfBirth() );
             callableStatement.setDate( 8 , student.getDateOfJoin() );
@@ -192,7 +188,6 @@ public class StudentDao implements IDAO
             callableStatement.setString( 6 , student.getGender() );
             
             callableStatement.setInt( 7 , student.getClassId() );
-//            callableStatement.setInt( 7 , student.getSchoolClass().getId() );
             
             callableStatement.setDate(8 , student.getDateOfBirth() );
             callableStatement.setDate( 9 , student.getDateOfJoin() );

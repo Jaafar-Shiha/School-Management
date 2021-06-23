@@ -7,8 +7,3 @@
 	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
-/* style when mouse is inside the region
-.my-button:hover {
-    -fx-background-color: red;
-}
- */
